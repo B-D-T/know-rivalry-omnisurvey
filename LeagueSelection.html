@@ -204,9 +204,12 @@
 				
 				if (!isNaN(Qualtrics.SurveyEngine.getEmbeddedData('lgID'))) {
 					// If the lgID is stored in the embedded data, set that as the leagueId
-					leagueId = parseInt(Qualtrics.SurveyEngine.getEmbeddedData('lgID'));
-					jQuery("#storageLeagueId").text(leagueId); // Store the leagueId in a hidden div on the page
-				}
+					jQuery.when(  Qualtrics.SurveyEngine.getEmbeddedData('lgID') )
+					.then(function(response){
+						leagueId = parseInt(response);
+						jQuery("#storageLeagueId").text(leagueId); // Store the leagueId in a hidden div on the page
+					});
+				};
 				
 				if (!isNaN(Qualtrics.SurveyEngine.getEmbeddedData('survID'))) {
 					// If the survID is stored in the embedded data, set that as the surveyId
