@@ -122,6 +122,7 @@ var Omnisurvey_LeagueSelection = function($, data, leagueId, surveyId) {
 		toggleLeagueSelect();
 	}
 
+	// Runs on page load
 	function init() {
 
 		// These will be set by the code
@@ -171,6 +172,15 @@ var Omnisurvey_LeagueSelection = function($, data, leagueId, surveyId) {
 		} else {
 			toggleLeagueSelect();
 		}
+		
+		// Customize the style of Qualtrics elements
+
+		// Reduce the distance between elements. Tighten up the page.
+		jQuery('.Skin .QuestionOuter').css('padding-bottom', '0vh');
+		// Reduce the distance between league buttons
+		jQuery('.Skin label.MultipleAnswer, .Skin label.MultipleAnswer.q-focused, .Skin label.SingleAnswer ').css(
+			{"padding-top": "5px","padding-bottom": "5px"}
+		);
 
 		$splashChangeLeagueBtn.on('click', changeLeagueButtonHandler);
 
