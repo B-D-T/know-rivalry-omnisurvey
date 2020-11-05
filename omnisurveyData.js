@@ -38,7 +38,7 @@ var Omnisurvey_Data = function ($) {
     }
 
     // Returns an object with the data for just one league
-    // e.g., (as of 20201028) if passed leagueId=7, it returns {"lgID":7,"lgSport":"Cricket","lgName":"BBL","lgCurrentSurvID":19,"lgSlug":"s_m_t20_bbl","lgFullName":"Big Bash League","lgTheFullName":"the Big Bash League","lgHasProRel":false,"lgBritishSpelling":true,"lgNumOfFavteamSublevels":0}
+    // e.g., (as of 20201028) if passed leagueId=7, it returns {"lgID":7,"lgSport":"Cricket","lgName":"BBL","lgCurrentSurvID":19,"lgSlug":"s_m_t20_bbl","lgFullName":"Big Bash League","lgTheFullName":"the Big Bash League","lgHasProRel":false,"lgBritishSpelling":true,"lgNumOfFaventSublevels":0}
     this.getLeague = function (leagueId) {
         const leagues = self.Leagues.filter(function (league) {
             return league.lgID === leagueId;
@@ -66,7 +66,7 @@ var Omnisurvey_Data = function ($) {
     };
 
     // Returns an object with the data for just one survey
-    // e.g., (as of 20201028) if pass surveyId=2, it returns {"survID":2,"survLaunchDate":0,"survInfConsTLDR":"InformedConsent_Sport_TLDR","survInfConsFullText":"InformedConsent_Sport_FullText","BLOCKIntro":false,"BLOCKInformedConsent":false,"BLOCKFavTeam":false,"BLOCKFavTeamIden":false,"BLOCKRivalTeam":false}
+    // e.g., (as of 20201028) if pass surveyId=2, it returns {"survID":2,"survLaunchDate":0,"survInfConsTLDR":"InformedConsent_Sport_TLDR","survInfConsFullText":"InformedConsent_Sport_FullText","BLOCKIntro":false,"BLOCKInformedConsent":false,"BLOCKFavEnt":false,"BLOCKFavEntIden":false,"BLOCKRivalEnt":false}
     this.getSurvey = function (surveyId) {
 
         const surveys = self.Surveys.filter(function (survey) {
@@ -95,7 +95,7 @@ var Omnisurvey_Data = function ($) {
         return null;
     };
 
-    this.getTeamsByGroup = function (groupId, sort) {
+    this.getEntsByGroup = function (groupId, sort) {
         let groups = getLowestLevelGroups(self.getGroupById(groupId).groups);
 
         if (groups === null || groups.length <= 0) {
@@ -153,7 +153,7 @@ var Omnisurvey_Data = function ($) {
     };
 
 
-    // ############# Added for team Rival Selection #######################
+    // ############# Added for ent Rival Selection #######################
 
     this.getGroupAndSiblings = function(groupId) {
         const parentGroup = getParentGroup(groupId, LeagueHierarchy);
@@ -196,7 +196,7 @@ var Omnisurvey_Data = function ($) {
             $.getJSON(pathJSON.LeagueHierarchy)
                 .done(function (data) {
                     // Store the cascading object of the entire hierarchy,
-                    // starting with root, then sport (id:2, name:"Gridiron football"), and ending with a team (e.g., id:165, name:"Chicago Bears")
+                    // starting with root, then sport (id:2, name:"Gridiron football"), and ending with a ent (e.g., id:165, name:"Chicago Bears")
                     LeagueHierarchy = data; aryJSONLoaded.push("League Hierarchy");
                 }).fail(function (jqXHR, textStatus, errorThrown) { fnErrorLoadingJSON("league hierarchy", textStatus); }),
 
@@ -209,7 +209,7 @@ var Omnisurvey_Data = function ($) {
 
             $.getJSON(pathJSON.Surveys)
                 .done(function (data) {
-                    // Store the Surveys object {survID:1, BLOCKFavTeam:true}
+                    // Store the Surveys object {survID:1, BLOCKFavEnt:true}
                     tbljsSurveys = data; aryJSONLoaded.push("Survey JSON loaded");
                     self.Surveys = mapSurveys();
                 }).fail(function (jqXHR, textStatus, errorThrown) { fnErrorLoadingJSON("survey", textStatus); })

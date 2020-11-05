@@ -1,6 +1,6 @@
 'use strict';
 
-var Omnisurvey_TeamRivals = function ($, data, leagueId, teamId) {
+var Omnisurvey_EntRivals = function ($, data, leagueId, entId) {
 
 
 // WAS: Other than isValidRivalsSelection, all of these were const instead of let
@@ -9,27 +9,27 @@ var Omnisurvey_TeamRivals = function ($, data, leagueId, teamId) {
     let $rivalryPointsInputs = $question.find('.ChoiceRow input[type="text"]');
     let $rivalryPointsTotal = $('.CSTotal input');
     let $rivalryPointsError = $('<div class="rivalry-points-error"></div>').appendTo($question);
-    let teamDropdownSelector = 'select:not(.league-select)';
+    let entDropdownSelector = 'select:not(.league-select)';
 
 
-    // Populate teams in second dropdown when user changes the league
+    // Populate ents in second dropdown when user changes the league
     function changeLeague($select) {
         // get the selected group id
 // WAS: These were const instead of let
         let groupId = parseInt($select.val());
-        let teamDropdown = $select.next('select');
-        populateTeams(teamDropdown, groupId);
+        let entDropdown = $select.next('select');
+        populateEnts(entDropdown, groupId);
     }
 
-    // Fill the teams within the dropdown
-    function populateTeams($select, groupId) {
-        // get the teams in the league
-        const teams = data.getTeamsByGroup(groupId, 'name');
+    // Fill the ents within the dropdown
+    function populateEnts($select, groupId) {
+        // get the ents in the league
+        const ents = data.getEntsByGroup(groupId, 'name');
 
         let options = '<option value=""></option>';
-        teams.forEach(function (team) {
-            if (team.id != teamId) {
-                options += '<option value="' + team.id + '">' + team.name + '</option>';
+        ents.forEach(function (ent) {
+            if (ent.id != entId) {
+                options += '<option value="' + ent.id + '">' + ent.name + '</option>';
             }
         });
 
@@ -38,7 +38,7 @@ var Omnisurvey_TeamRivals = function ($, data, leagueId, teamId) {
     }
 
     //WAS: I didn't have this function. I think I'd tried to move it into the .html file
-    function selectTeam($select) {
+    function selectEnt($select) {
         const $rivalryPointsInput = $select.closest('.ChoiceRow').next().find('input');
     
         if ($select.val() === '') {
@@ -127,7 +127,7 @@ var Omnisurvey_TeamRivals = function ($, data, leagueId, teamId) {
         level = typeof level !== 'undefined' ? level : 0;
 
         $.each(groups, function (index, childGroup) {
-            // stop at team level, skip groups that shouldn't be displayed
+            // stop at ent level, skip groups that shouldn't be displayed
             if (!childGroup.groups) { // || !childGroup.grpShowSurvSelRival) {
                 return;
             }
@@ -167,14 +167,14 @@ var Omnisurvey_TeamRivals = function ($, data, leagueId, teamId) {
 
         if (leagueId > 0) {
             // get the league grouping
-            groups = data.getGroupAndSiblings(leagueId);//data.getCompetitiveGroupingByTeamId(teamId);
+            groups = data.getGroupAndSiblings(leagueId);//data.getCompetitiveGroupingByEntId(entId);
             console.log(groups);
         } else {
             // TODO: INVALID DATA, DO SOMETHING
             return;
         }
 
-        // populate teams on league change
+        // populate ents on league change
         $question.on('change', 'select.league-select', function () {
             changeLeague($(this));
          });
@@ -186,8 +186,8 @@ var Omnisurvey_TeamRivals = function ($, data, leagueId, teamId) {
             createGroupOptions(groups, $select);
             $select.change(); // trigger change
         } else {
-            $question.find(teamDropdownSelector).each(function () {
-                populateTeams($(this), leagueId);
+            $question.find(entDropdownSelector).each(function () {
+                populateEnts($(this), leagueId);
             });
         }
 
@@ -209,9 +209,9 @@ var Omnisurvey_TeamRivals = function ($, data, leagueId, teamId) {
                 validate();
             });
 
-        // best way to determine team selection dropdown currently
-        $question.on('change', teamDropdownSelector, function() {
-            selectTeam($(this));
+        // best way to determine ent selection dropdown currently
+        $question.on('change', entDropdownSelector, function() {
+            selectEnt($(this));
         });
 
     }

@@ -289,7 +289,7 @@
 
         (function () {
             const OMNISURVEY_TEST = false;
-            let leagueId = -1, teamId = -1;
+            let leagueId = -1, entId = -1;
             const self = this;
 
 
@@ -313,7 +313,7 @@
                     const qse = Qualtrics.SurveyEngine;
 
                     leagueId = parseInt(qse.getEmbeddedData('lgID'));
-                    teamId = parseInt(qse.getEmbeddedData('FavObjEntID'));
+                    entId = parseInt(qse.getEmbeddedData('FavObjEntID'));
 
                     // Hookup Rivalry Points stuff
 
@@ -343,7 +343,7 @@
                             console.log(`ED data for ID ${selectedEntID}: ${selectedName} (${selectedPoints} points)`);
                         });
 
-                        // User changes a team name
+                        // User changes a ent name
                         $this.on('change', function () {
                             $selected = jQuery(this).find('option:selected');
                             console.log(rivalKey + 'Name: ' + $selected.text() + ' (' + + jQuery(this).val() + ')');
@@ -410,7 +410,7 @@
             }
 
             function loadQuestion() {
-                var omnisurvey_TeamRivals = new Omnisurvey_TeamRivals(jQuery, self.omnisurvey_data, leagueId, teamId); // this is what loads the Omnisurvey
+                var omnisurvey_EntRivals = new Omnisurvey_EntRivals(jQuery, self.omnisurvey_data, leagueId, entId); // this is what loads the Omnisurvey
             }
         })();
 

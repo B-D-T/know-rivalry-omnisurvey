@@ -23,7 +23,7 @@
 
 
         <div class="Questions">
-            <div id="teams-container">
+            <div id="ents-container">
                 <div>
                     <b>Filter:</b>
                     <select id="leagueFilter"></select>
@@ -33,14 +33,15 @@
                 <div style="clear:both;">
                     <!--temporary-->
                 </div>
-                <h2>Teams</h2>
-                <div id="teams" class="clearfix"></div>
+                <div id="ent-logo-header">
+                    Teams
+                </div>
+                <div id="ents" class="clearfix"></div>
             </div>
-            <div id="selected-team">
-                <!-- There was no 'reset-filters' in the css. What's this purpose? -->
-                <a href="#" class="reset-filters">&lt; select a different team</a>
-                <h3></h3>
-                <div id="selected-team-logo"></div>
+            <div id="selected-ent">
+                <div id="selected-ent-logo"></div>
+                <div id="selected-ent-name"></div>
+                <a href="#" class="faventResetAllFilters">&lt; select a different team</a>
             </div>
         </div>
         <!-- <div id="Buttons" role="navigation">
@@ -60,7 +61,7 @@
         (function () {
             const OMNISURVEY_TEST = false;
             let leagueId = -1;
-            let favoriteTeamSelectedHandler;
+            let favoriteEntSelectedHandler;
             const self = this;
 
 
@@ -74,8 +75,8 @@
                     leagueId = parseInt(searchParams.get('lgID'));
                 }
 
-                favoriteTeamSelectedHandler = function () {
-                    console.log('FAVTEAM:', this.FavoriteTeamName, this.FavoriteTeamId);
+                favoriteEntSelectedHandler = function () {
+                    console.log('FAVTEAM:', this.FavoriteEntName, this.FavoriteEntId);
                 };
 
                 jQuery('body').prepend('<div id="SurveyInTestMode">The survey is in test mode.</div>');
@@ -85,12 +86,13 @@
             } else {
 
                 Qualtrics.SurveyEngine.addOnload(function () {
-                    leagueId = parseInt(Qualtrics.SurveyEngine.getEmbeddedData('lgID'));
+                    const qse = Qualtrics.SurveyEngine;
+                    leagueId = parseInt(qse.getEmbeddedData('lgID'));
 
-                    favoriteTeamSelectedHandler = function () {
-                        Qualtrics.SurveyEngine.setEmbeddedData('FavObj', this.FavoriteTeamName);
-                        Qualtrics.SurveyEngine.setEmbeddedData('FavObjThe', 'the ' + this.FavoriteTeamName);
-                        Qualtrics.SurveyEngine.setEmbeddedData('FavObjEntID', this.FavoriteTeamId);
+                    favoriteEntSelectedHandler = function () {
+                        qse.setEmbeddedData('FavObj', this.FavoriteEntName);
+                        qse.setEmbeddedData('FavObjThe', 'the ' + this.FavoriteEntName);
+                        qse.setEmbeddedData('FavObjEntID', this.FavoriteEntId);
                     };
 
                     init();
@@ -107,7 +109,7 @@
             }
 
             function init() {
-                //var leagueData = Omnisurvey_Data.getTeamsByLeague(leagueId);
+                //var leagueData = Omnisurvey_Data.getEntsByLeague(leagueId);
                 //leagueData.divisionLevelTerms = leagueLevelTerms;
                 if (window.hasOwnProperty('omnisurvey_data') && omnisurvey_data.dataLoaded) {
                     loadQuestion();
@@ -122,8 +124,8 @@
 
 
             function loadQuestion() {
-                var omnisurvey_FavoriteTeams = new Omnisurvey_FavoriteTeams(jQuery, window.omnisurvey_data, leagueId); // this is what loads the Omnisurvey
-                omnisurvey_FavoriteTeams.favoriteTeamSelectedHandler = favoriteTeamSelectedHandler;
+                var omnisurvey_FavoriteEnts = new Omnisurvey_FavoriteEnts(jQuery, window.omnisurvey_data, leagueId); // this is what loads the Omnisurvey
+                omnisurvey_FavoriteEnts.favoriteEntSelectedHandler = favoriteEntSelectedHandler;
             }
         })();
         

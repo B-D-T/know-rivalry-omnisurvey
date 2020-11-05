@@ -1,25 +1,25 @@
 'use strict';
 
-var Omnisurvey_FavoriteTeams = function ($, data, leagueId) {
+var Omnisurvey_FavoriteEnts = function ($, data, leagueId) {
 
 	const self = this;
 
 	// Eventually, these are what will be passed to the Qualtrics embedded data
-	this.favoriteTeamSelectedHandler;
-	this.FavoriteTeamId = -1;
-	this.FavoriteTeamName = "";
+	this.favoriteEntSelectedHandler;
+	this.FavoriteEntId = -1;
+	this.FavoriteEntName = "";
 
 	let selectedLeague = null;
 	let $leagueFilter = $('#leagueFilter');
-	let $favTeamBtns = null;
-	let $teams = $('#teams');
-	let $selectedTeamLogo = $('#selected-team-logo');
-	let $selectedTeamContainer = $('#selected-team');
+	let $favEntBtns = null;
+	let $ents = $('#ents');
+	let $selectedEntLogo = $('#selected-ent-logo');
+	let $selectedEntContainer = $('#selected-ent');
 
-	const $teamsContainer = $('#teams-container');
+	const $entsContainer = $('#ents-container');
 	const $nextButton = $('#NextButton');
 
-	const strTeamLogoRootDir = 'https://knowrivalry.com/images/teamlogos/'; // This is the folder that holds the logos (SVGs) for each team
+	const strEntLogoRootDir = 'https://knowrivalry.com/images/teamlogos/'; // This is the folder that holds the logos (SVGs) for each ent
 
 	// groups = the league object that has conf/div hierarchy
 	function createGroupOptions(groups, $select, level) {
@@ -58,62 +58,63 @@ var Omnisurvey_FavoriteTeams = function ($, data, leagueId) {
 		});
 	}
 
-	function selectTeam(teamId, teamName) {
-		self.FavoriteTeamId = teamId; // This is the value that we'll eventually write to Qualtrics embedded data
-		self.FavoriteTeamName = teamName;
+	function selectEnt(entId, entName) {
+		self.FavoriteEntId = entId; // This is the value that we'll eventually write to Qualtrics embedded data
+		self.FavoriteEntName = entName;
 
-		if (teamId > 0) {
-			const team = data.getGroupById(teamId);
-			const imgPath = strTeamLogoRootDir + 'logo_team'+team.id+'.svg';
+		if (entId > 0) {
+			const ent = data.getGroupById(entId);
+			const imgPath = strEntLogoRootDir + 'logo_team'+ent.id+'.svg';
 
-			// set the logo
-			$selectedTeamLogo.css('background-image', 'url(' + imgPath + ')');
-			$selectedTeamContainer.find('h3').html(self.FavoriteTeamName);
+			// set the logo and the ent name
+			$selectedEntLogo.css('background-image', 'url(' + imgPath + ')');
+			$selectedEntContainer.find('#selected-ent-name').html(self.FavoriteEntName);
 
 			// enable next button
 			$nextButton.removeAttr('disabled');
 
-			$selectedTeamContainer.show();
-			$teamsContainer.hide();
+			$selectedEntContainer.show();
+			$entsContainer.hide();
 
 		} else {
 			$nextButton.attr('disabled', 'disabled');
 
 
 			// hide/show containers
-			$selectedTeamContainer.hide();
-			$teamsContainer.show();
+			$selectedEntContainer.hide();
+			$entsContainer.show();
 		}
 
-		if (typeof self.favoriteTeamSelectedHandler === 'function') {
-			self.favoriteTeamSelectedHandler();
+		if (typeof self.favoriteEntSelectedHandler === 'function') {
+			self.favoriteEntSelectedHandler();
 		}
 	}
 
 
-	function showAllFavTeamButtons(blnShowAll) {
+	function showAllFavEntButtons(blnShowAll) {
 		if (blnShowAll == true) {
-			$favTeamBtns.show();
+			$favEntBtns.show();
 		} else {
-			$favTeamBtns.hide();
+			$favEntBtns.hide();
 		}
 	}
-	function createFavTeamButtons() {
-		const teams = data.getTeamsByGroup(leagueId, 'name');
+	function createFavEntButtons() {
+		const ents = data.getEntsByGroup(leagueId, 'name');
 
-		teams.forEach(function (team) {
-			const strTeamImgFilename = strTeamLogoRootDir + 'logo_team' + team.id + '.svg';
-			$teams.append('<div style="background-image: url(' + strTeamImgFilename + ')" id="btnTeamID' + ('0' + team.id).slice(-4) + '" class="ClassFavTeam" data-id="' + team.id + '">' + team.name + '</div>');
+		// Populate the ent selection logos and ent names
+		ents.forEach(function (ent) {
+			const strEntImgFilename = strEntLogoRootDir + 'logo_team' + ent.id + '.svg';
+			$ents.append('<div style="background-image: url(' + strEntImgFilename + ')" id="btnEntID' + ent.id + '" class="ClassFavEnt" data-id="' + ent.id + '">' + ent.name + '</div>');
 		});
 
-		$favTeamBtns = $('.ClassFavTeam');
-		$favTeamBtns.on('click', favTeamClicked);
+		$favEntBtns = $('.ClassFavEnt');
+		$favEntBtns.on('click', favEntClicked);
 	}
 
-	function favTeamClicked() {
+	function favEntClicked() {
 		var $this = $(this);
 
-		selectTeam($this.data('id'), $this.text());
+		selectEnt($this.data('id'), $this.text());
 	}
 
 
@@ -121,29 +122,29 @@ var Omnisurvey_FavoriteTeams = function ($, data, leagueId) {
 	// and .val is the text of that element.
 	function filterChanged() {
 		const groupId = $(this).val();
-		filterTeams(groupId);
+		filterEnts(groupId);
 	}
 
-	function filterTeams(groupId) {
+	function filterEnts(groupId) {
 		if (groupId === undefined || groupId === '') {
 			// show all
-			showAllFavTeamButtons(true);
+			showAllFavEntButtons(true);
 		} else {
 			// hide all
-			showAllFavTeamButtons(false);
+			showAllFavEntButtons(false);
 
-			// show filtered teams
-			const teams = data.getTeamsByGroup(groupId);
-			$.each(teams, function (index, team) {
-				//if (team.divisionLevels[filterLevel-1] == filterValue) {
-				$favTeamBtns.filter('[data-id=' + team.id + ']').show();
+			// show filtered ents
+			const ents = data.getEntsByGroup(groupId);
+			$.each(ents, function (index, ent) {
+				//if (ent.divisionLevels[filterLevel-1] == filterValue) {
+				$favEntBtns.filter('[data-id=' + ent.id + ']').show();
 				//}
 			});
 		}
 	}
 
 	function resetAll() {
-		selectTeam(-1, "");
+		selectEnt(-1, "");
 	}
 	
 
@@ -160,12 +161,12 @@ var Omnisurvey_FavoriteTeams = function ($, data, leagueId) {
 		$leagueFilter.on('change', filterChanged);
 
 
-		// Create FavTeam buttons
-		createFavTeamButtons();
+		// Create FavEnt buttons
+		createFavEntButtons();
 
 		resetAll();
 
-		$('.reset-filters').on('click', function (e) {
+		$('.faventResetAllFilters').on('click', function (e) {
 			e.preventDefault();
 			resetAll();
 		});

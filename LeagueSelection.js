@@ -130,7 +130,7 @@ var Omnisurvey_LeagueSelection = function($, data, leagueId, surveyId) {
 		// Fetches an object with that league's information.
 		if (leagueId > 0) {
 			// This means a leagueId was passed in the query string (i.e., it's in the embedded data)
-			// e.g., {"lgID":7,"lgSport":"Cricket","lgName":"BBL","lgCurrentSurvID":19,"lgSlug":"s_m_t20_bbl","lgFullName":"Big Bash League","lgTheFullName":"the Big Bash League","lgHasProRel":false,"lgBritishSpelling":true,"lgNumOfFavteamSublevels":0}
+			// e.g., {"lgID":7,"lgSport":"Cricket","lgName":"BBL","lgCurrentSurvID":19,"lgSlug":"s_m_t20_bbl","lgFullName":"Big Bash League","lgTheFullName":"the Big Bash League","lgHasProRel":false,"lgBritishSpelling":true,"lgNumOfFaventSublevels":0}
 			league = data.getLeague(leagueId);
 		}
 		console.log("league ==>",league);

@@ -26,11 +26,15 @@ body#SurveyEngineBody{
     display: none;
 }
 
+body *{
+    border: red 1px solid !important;
+}
+
 /*
 ######################
 TESTING
 ######################
-Should these be part of production? Perhaps on specific pages (e.g., Favorite Team)
+Should these be part of production? Perhaps on specific pages (e.g., Favorite Ent)
 */
 .clearfix:after {
     content: "";
@@ -49,6 +53,7 @@ fieldset {
 }
 
 
+
 /*
 ######################
 STYLES USED ACROSS SURVEY
@@ -59,6 +64,7 @@ STYLES USED ACROSS SURVEY
 body{
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
+
 body p {
     margin-bottom: 8px;
 }
@@ -66,6 +72,7 @@ body p {
 /*
 ######################
 SELECT RIVALS PAGE
+QID164 is the question with league & ent dropdowns and points sliders and textboxes
 ######################
 */
     #QID164 .c4 {
@@ -116,13 +123,16 @@ FAVORITE TEAM PAGE
 ######################
 */
 
-.ClassFavTeam:hover{
+#ents-container #ent-logo-header{
+    font-size: 2.0em;
+    font-weight: bold;
+}
+.ClassFavEnt:hover{
     background-image: none !important;
     font-size: 14px;
-
 }
   
-    .ClassFavTeam {
+    .ClassFavEnt {
         border-style: none;
         background-repeat: no-repeat;
         background-color: transparent;
@@ -141,17 +151,32 @@ FAVORITE TEAM PAGE
     
       
 
-    #selected-team {
+    #selected-ent {
         display: none;
     }
     
-    #selected-team-logo{
+    #selected-ent-logo{
         width:200px;
         height:200px;
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
+        margin:10px auto;
+
     }
+
+    #selected-ent-name{
+        margin: 10px auto;
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.2em;
+        color: rgb(117, 117, 117);
+
+    }
+
+.faventResetAllFilters{
+    font-size:0.9em;
+}
 /*
 ######################
 WELCOME PAGE
@@ -171,9 +196,14 @@ WELCOME PAGE
         line-height:1.3;
         text-align: center;
         color: #fff;
-        text-shadow: #000000 0px 0px 4px;
-        -webkit-font-smoothing: antialiased;
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: black;
     }
+        #SplashTitleText .style2 {
+            color: black;
+            -webkit-text-stroke-width: 2px;
+            -webkit-text-stroke-color: lightgray;
+        }
 
     /* This is the error box for league selection if necessary... which we hope is never*/
     #SplashErrorSelectLeague {
@@ -193,7 +223,7 @@ WELCOME PAGE
         margin: 25px 0;			
     }
 
-    /* This is the text that sits just below the league logo */
+    /* This is the text that sits just below the league logo once the user's selection is made */
     #SplashWelcomeText {
         text-align: center;
         font-size: 1.5em;
@@ -202,19 +232,22 @@ WELCOME PAGE
     
     /* This is the button that, if visible, allows the user to change the league  */
     #SplashChangeLeagueBtn {
-        color: #53555f;
-        background-color: transparent;
-        font-size: 16px;
-        padding: 8px 20px;
+        background-color: rgba(255, 255, 255, 0.01); /* transparent, white background */
+        border: none;
+        margin-top: 30px;
         cursor: pointer;
-        text-align: center;
-        text-decoration: none;
-        border: solid 1px;
     }
-        #SplashChangeLeagueBtn:hover {
-            color: #fff;
-            background-color: #53555f;
-            border-color: #53555f;
+
+        #SplashChangeLeagueBtn .ChangeLeagueText {
+            font-size: 0.8em;
+            color: rgb(50, 0, 255);
+            text-align: center;
+            }
+
+        #SplashChangeLeagueBtn .ChangeLeagueText:hover{
+            color: #ffffff;
+            text-decoration: none;
+            background-color: rgb(50, 0, 255);
         }
     
     /* This is the custom next button I created to use instead of the Qualtrics default  */
@@ -230,7 +263,7 @@ WELCOME PAGE
         #SplashMyNextButton {
             border: none;
             color: #fff;
-            font-size: 16px;
+            font-size: 20px;
             padding: 8px 20px;
             text-align: center;
             text-decoration: none;
@@ -242,7 +275,7 @@ WELCOME PAGE
         
         #SplashMyNextButton:hover {
             color: #53555f;
-            background-color: transparent;
+            background-color: #e0e0e0;
         }
 
     /* Footer text declaring our lack of funding from the leagues */
