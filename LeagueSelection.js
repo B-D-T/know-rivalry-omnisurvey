@@ -174,13 +174,13 @@ var Omnisurvey_LeagueSelection = function($, data, leagueId, surveyId) {
 		}
 		
 		// Customize the style of Qualtrics elements
-
-		// Reduce the distance between elements. Tighten up the page.
-		jQuery('.Skin .QuestionOuter').css('padding-bottom', '0vh');
-		// Reduce the distance between league buttons
-		jQuery('.Skin label.MultipleAnswer, .Skin label.MultipleAnswer.q-focused, .Skin label.SingleAnswer ').css(
-			{"padding-top": "5px","padding-bottom": "5px"}
-		);
+		function customStyleLeagueSelectionPage(){
+			// Reduce the distance between elements. Tighten up the page.
+			$('.Skin .QuestionOuter').css('padding-bottom', '0vh');
+			// Reduce the distance between league buttons
+			$surveySelectionQuestion.css({"padding-top": "5px","padding-bottom": "5px"});
+		};
+		customStyleLeagueSelectionPage();
 
 		$splashChangeLeagueBtn.on('click', changeLeagueButtonHandler);
 

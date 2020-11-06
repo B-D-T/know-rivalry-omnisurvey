@@ -51,6 +51,9 @@ fieldset {
     margin-left: 10px;
     padding: 0;
 }
+.Skin .SkinInner {
+    padding-top:30px;
+}
 
 
 
@@ -64,53 +67,57 @@ STYLES USED ACROSS SURVEY
 body{
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
-
 body p {
     margin-bottom: 8px;
+}
+
+.Skin .SkinInner {
+    padding-top:30px;
 }
 
 /*
 ######################
 SELECT RIVALS PAGE
-QID164 is the question with league & ent dropdowns and points sliders and textboxes
+QID246 is the question with league & ent dropdowns and points sliders and textboxes
 ######################
 */
-    #QID164 .c4 {
-        padding: 10px;
-    }
 
-    #QID164 input[type="range"] {
+    /* #QID246 .c4 {
+        padding: 10px;
+    } */
+
+    #QID246 input[type="range"] {
         width: 100%;
     }
     
-    #QID164 input[type="range"]::-webkit-slider-runnable-track {
+    #QID246 input[type="range"]::-webkit-slider-runnable-track {
     background: -moz-linear-gradient(left, #fffa00 0%, #ff0000 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(left, #fffa00 0%,#ff0000 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to right, #fffa00 0%,#ff0000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fffa00', endColorstr='#ff0000',GradientType=1 ); /* IE6-9 */
     }
 
-    #QID164 input[type="range"]::-moz-range-track {
+    #QID246 input[type="range"]::-moz-range-track {
 
     }
-    #QID164 input[type="range"]::-ms-track {
+    #QID246 input[type="range"]::-ms-track {
 
     }
 
-    #QID164 .CSTotalInput {
+    #QID246 .CSTotalInput {
     color: red;
     }
 
-    #QID164 .CSTotalInput.valid-point-total {
+    #QID246 .CSTotalInput.valid-point-total {
     color: green;
     }
 
-    #QID164 .rivalry-points-error {
+    #QID246 .rivalry-points-error {
     color: red;
     text-align: center;
     }
 
-    #QID164 .ChoiceRow .LabelWrapper label > span {
+    #QID246 .ChoiceRow .LabelWrapper label > span {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -123,6 +130,14 @@ FAVORITE TEAM PAGE
 ######################
 */
 
+#ents-container .ents-filter-header{
+    padding:0px 10px 11px 2px;
+}
+#ents-container .ents-filter-header .header-text{
+    display:inline;
+    font-weight: bold;
+
+}
 #ents-container #ent-logo-header{
     font-size: 2.0em;
     font-weight: bold;
@@ -147,6 +162,7 @@ FAVORITE TEAM PAGE
         vertical-align: bottom;
         float: left;
         cursor: pointer;
+        padding-top:3px;
     }
     
       

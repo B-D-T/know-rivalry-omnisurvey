@@ -4,7 +4,7 @@ var Omnisurvey_EntRivals = function ($, data, leagueId, entId) {
 
 
 // WAS: Other than isValidRivalsSelection, all of these were const instead of let
-    const questionId = 'QID164';
+    const questionId = 'QID246';
     let $question = $('#' + questionId);
     let $rivalryPointsInputs = $question.find('.ChoiceRow input[type="text"]');
     let $rivalryPointsTotal = $('.CSTotal input');
@@ -15,7 +15,6 @@ var Omnisurvey_EntRivals = function ($, data, leagueId, entId) {
     // Populate ents in second dropdown when user changes the league
     function changeLeague($select) {
         // get the selected group id
-// WAS: These were const instead of let
         let groupId = parseInt($select.val());
         let entDropdown = $select.next('select');
         populateEnts(entDropdown, groupId);
@@ -37,7 +36,6 @@ var Omnisurvey_EntRivals = function ($, data, leagueId, entId) {
             .change(); // trigger change
     }
 
-    //WAS: I didn't have this function. I think I'd tried to move it into the .html file
     function selectEnt($select) {
         const $rivalryPointsInput = $select.closest('.ChoiceRow').next().find('input');
     
@@ -181,7 +179,6 @@ var Omnisurvey_EntRivals = function ($, data, leagueId, entId) {
 
         // determine if there are sibling leagues to choose rivals from
         if (groups != null) {
-// WAS: Changed const to let (here it might have mattered)
             let $select = $('<select class="league-select"></select>').prependTo($question.find('select').parent());
             createGroupOptions(groups, $select);
             $select.change(); // trigger change
@@ -203,7 +200,6 @@ var Omnisurvey_EntRivals = function ($, data, leagueId, entId) {
             .attr({ type: 'number', min: 0, max: 100, disabled: 'disabled' })
             .before($range)
             .on('input change', function () {
-//WAS const $this
                 let $this = $(this);
                 $this.prev('input').val($this.val());
                 validate();
