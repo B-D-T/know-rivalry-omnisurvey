@@ -5,12 +5,12 @@
 var Omnisurvey_Data = function ($) {
     var self = this;
     // These are the objects from data outputted by Access (RivDB_BuildSurvey)
-    // I don't know/remember why LeagueHierarchy is an array and the other two are objects - might be an error, although there's prob a reason
-    let LeagueHierarchy = [], tbljsLeagues = {}, tbljsSurveys = {};
+    // I don't know/remember why GroupingHierarchy is an array and the other two are objects - might be an error, although there's prob a reason
+    let GroupingHierarchy = [], tbljsGroupings = {}, tbljsSurveys = {};
 
     // Putting this.<whatever> allows us to expose the <whatever> to code elsewhere, like in LeagueSelection.js
     this.Surveys = {};
-    this.Leagues = {};
+    this.Groupings = {};
 
     this.dataLoaded = false;
 
@@ -19,16 +19,16 @@ var Omnisurvey_Data = function ($) {
     // pathBase = "https://auxiliarydev.github.io/know-rivalry-omnisurvey/";
     pathBase = "https://b-d-t.github.io/know-rivalry-omnisurvey/";
     const pathJSON = {
-        "LeagueHierarchy": pathBase + 'data/leagueHierarchy.json',
-        "Leagues": pathBase + 'data/leagues.json', // tbljsLeagues
+        "GroupingHierarchy": pathBase + 'data/groupingHierarchy.json',
+        "Groupings": pathBase + 'data/groupings.json', // tbljsGroupings
         "Surveys": pathBase + 'data/surveys.json', // tbljsSurveys
     };
 
     // This is called from the end of init()
     // It creates a map from the JSON input
-    function mapLeagues() {
-        return Object.keys(tbljsLeagues).map(function (key) {
-            return tbljsLeagues[key];
+    function mapGroupings() {
+        return Object.keys(tbljsGroupings).map(function (key) {
+            return tbljsGroupings[key];
         });
     }
     function mapSurveys() {
@@ -37,29 +37,29 @@ var Omnisurvey_Data = function ($) {
         });
     }
 
-    // Returns an object with the data for just one league
-    // e.g., (as of 20201028) if passed leagueId=7, it returns {"lgID":7,"lgSport":"Cricket","lgName":"BBL","lgCurrentSurvID":19,"lgSlug":"s_m_t20_bbl","lgFullName":"Big Bash League","lgTheFullName":"the Big Bash League","lgHasProRel":false,"lgBritishSpelling":true,"lgNumOfFaventSublevels":0}
-    this.getLeague = function (leagueId) {
-        const leagues = self.Leagues.filter(function (league) {
-            return league.lgID === leagueId;
+    // Returns an object with the data for just one grouping
+    // e.g., (as of 20201028) if passed groupingId=7, it returns {"grpID":7,"grpSport":"Cricket","termKRQualtrics":"BBL","grpCurrentSurvID":19,"grpSlug":"s_m_t20_bbl","grpFullName":"Big Bash Grouping","grpTheFullName":"the Big Bash Grouping","grpHasProRel":false,"grpBritishSpelling":true,"grpNumOfFaventSublevels":0}
+    this.getGrouping = function (groupingId) {
+        const groupings = self.Groupings.filter(function (grouping) {
+            return grouping.grpID === groupingId;
         });
 
-        // If the filter returns more than one league, just return the first one (MLB)
-        if (leagues.length > 0) {
-            return leagues[0];
+        // If the filter returns more than one grouping, just return the first one (MLB)
+        if (groupings.length > 0) {
+            return groupings[0];
         }
 
         return null;
     };
 
-    // This uses the surveyId to pull all the leagues that are using that version of the survey
-    this.getLeaguesBySurvey = function (surveyId) {
-        const leagues = self.Leagues.filter(function (league) {
-            return league.lgCurrentSurvID === surveyId;
+    // This uses the surveyId to pull all the groupings that are using that version of the survey
+    this.getGroupingsBySurvey = function (surveyId) {
+        const groupings = self.Groupings.filter(function (grouping) {
+            return grouping.grpCurrentSurvID === surveyId;
         });
 
-        if (leagues.length > 0) {
-            return leagues;
+        if (groupings.length > 0) {
+            return groupings;
         }
 
         return null;
@@ -80,14 +80,14 @@ var Omnisurvey_Data = function ($) {
         return null;
     };
 
-    // This is passed a leagueId
+    // This is passed a groupingId
     this.getGroupById = function (groupId) {
-        // Filter the League Hierarchy JSON to find the children of this Id
+        // Filter the Grouping Hierarchy JSON to find the children of this Id
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!
         // HIGH PRIORITY FIX
         // This filters for all the IDs, so filtering on 10 pulls NBA and Auburn. I need to fix the IDs to use all the real ones from the database.
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        const group = self.filterGroups(LeagueHierarchy, 'id', groupId);
+        const group = self.filterGroups(GroupingHierarchy, 'entID', groupId);
 
         if (group.length > 0) {
             return group[0];
@@ -103,7 +103,7 @@ var Omnisurvey_Data = function ($) {
         }
 
         if (typeof sort !== 'undefined' && sort !== '') {
-            if (sort === 'name') {
+            if (sort === 'termKRQualtrics') {
                 groups.sort(sortName);
             }
         }
@@ -112,8 +112,8 @@ var Omnisurvey_Data = function ($) {
     };
 
     function sortName(a, b) {
-        if (a.name < b.name) { return -1; }
-        if (a.name > b.name) { return 1; }
+        if (a.termKRQualtrics < b.termKRQualtrics) { return -1; }
+        if (a.termKRQualtrics > b.termKRQualtrics) { return 1; }
         return 0;
     }
 
@@ -127,7 +127,7 @@ var Omnisurvey_Data = function ($) {
     };
 
 
-    // recursive function to filter League Hierarchy
+    // recursive function to filter Grouping Hierarchy
     this.filterGroups = function (groups, key, value, results) {
         // initialize results if needed
         results = typeof results !== 'undefined' ? results : [];
@@ -156,7 +156,7 @@ var Omnisurvey_Data = function ($) {
     // ############# Added for ent Rival Selection #######################
 
     this.getGroupAndSiblings = function(groupId) {
-        const parentGroup = getParentGroup(groupId, LeagueHierarchy);
+        const parentGroup = getParentGroup(groupId, GroupingHierarchy);
     
         if (parentGroup.length > 0) {
           // remove the group with the id we are looking for so we only return siblings
@@ -172,7 +172,7 @@ var Omnisurvey_Data = function ($) {
     
         return groups.reduce(function(acc, group) {
           var match = group.groups && group.groups.some(function(g) {
-            return g.id === groupId && g.groups;
+            return g.entID === groupId && g.groups;
           });
     
           return match ? acc.concat(group) : (group.groups? getParentGroup(groupId, group.groups, acc) : acc);
@@ -193,19 +193,19 @@ var Omnisurvey_Data = function ($) {
         let aryJSONLoaded = []; // this is just to help with testing. This variable (and its inclusions below) can be deleted if you want.
         const fnErrorLoadingJSON = (jsonDataName, textStatus) => { dataLoaded = false; console.log("Error loading " + jsonDataName + " JSON data: " + textStatus) };
         $.when(
-            $.getJSON(pathJSON.LeagueHierarchy)
+            $.getJSON(pathJSON.GroupingHierarchy)
                 .done(function (data) {
                     // Store the cascading object of the entire hierarchy,
-                    // starting with root, then sport (id:2, name:"Gridiron football"), and ending with a ent (e.g., id:165, name:"Chicago Bears")
-                    LeagueHierarchy = data; aryJSONLoaded.push("League Hierarchy");
-                }).fail(function (jqXHR, textStatus, errorThrown) { fnErrorLoadingJSON("league hierarchy", textStatus); }),
+                    // starting with root, then sport (entID:2, sport:"Gridiron football"), and ending with a ent (e.g., entID:165, termKRQualtrics:"Chicago Bears")
+                    GroupingHierarchy = data; aryJSONLoaded.push("Grouping Hierarchy");
+                }).fail(function (jqXHR, textStatus, errorThrown) { fnErrorLoadingJSON("grouping hierarchy", textStatus); }),
 
-            $.getJSON(pathJSON.Leagues)
+            $.getJSON(pathJSON.Groupings)
                 .done(function (data) {
-                    // Store the leagues object. {lgID:7, lgSport:"Cricket", lgName:"BBL", etc.}
-                    tbljsLeagues = data; aryJSONLoaded.push("Leagues");
-                    self.Leagues = mapLeagues();
-                }).fail(function (jqXHR, textStatus, errorThrown) { fnErrorLoadingJSON("league", textStatus); }),
+                    // Store the groupings object. {grpID:7, grpSport:"Cricket", termKRQualtrics:"BBL", etc.}
+                    tbljsGroupings = data; aryJSONLoaded.push("Groupings");
+                    self.Groupings = mapGroupings();
+                }).fail(function (jqXHR, textStatus, errorThrown) { fnErrorLoadingJSON("grouping", textStatus); }),
 
             $.getJSON(pathJSON.Surveys)
                 .done(function (data) {
@@ -222,7 +222,7 @@ var Omnisurvey_Data = function ($) {
                 if (dataLoaded) {
                     console.log("JSON loaded: ", aryJSONLoaded.join(", "));
 
-                    // This kicks the code back to the script in LeagueSelection.html immediately. 
+                    // This kicks the code back to the script in LeagueSelection. immediately. 
                     document.dispatchEvent(loadedEvent);
                 } else {
                     console.log('The dataLoaded variable was false, which means there was an error loading the data.');

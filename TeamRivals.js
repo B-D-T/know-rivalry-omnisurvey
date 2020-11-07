@@ -1,19 +1,19 @@
 'use strict';
 
-var Omnisurvey_EntRivals = function ($, data, leagueId, entId) {
+var Omnisurvey_EntRivals = function ($, data, groupingId, entId) {
 
 
 // WAS: Other than isValidRivalsSelection, all of these were const instead of let
-    const questionId = 'QID246';
-    let $question = $('#' + questionId);
+    // const questionId = 'QID246';
+    let $question = $('#rivSelTblWrapper');
     let $rivalryPointsInputs = $question.find('.ChoiceRow input[type="text"]');
     let $rivalryPointsTotal = $('.CSTotal input');
     let $rivalryPointsError = $('<div class="rivalry-points-error"></div>').appendTo($question);
-    let entDropdownSelector = 'select:not(.league-select)';
+    let entDropdownSelector = 'select:not(.grouping-select)';
 
 
-    // Populate ents in second dropdown when user changes the league
-    function changeLeague($select) {
+    // Populate ents in second dropdown when user changes the grouping
+    function changeGrouping($select) {
         // get the selected group id
         let groupId = parseInt($select.val());
         let entDropdown = $select.next('select');
@@ -22,13 +22,13 @@ var Omnisurvey_EntRivals = function ($, data, leagueId, entId) {
 
     // Fill the ents within the dropdown
     function populateEnts($select, groupId) {
-        // get the ents in the league
-        const ents = data.getEntsByGroup(groupId, 'name');
+        // get the ents in the grouping
+        const ents = data.getEntsByGroup(groupId, 'termKRQualtrics');
 
         let options = '<option value=""></option>';
         ents.forEach(function (ent) {
-            if (ent.id != entId) {
-                options += '<option value="' + ent.id + '">' + ent.name + '</option>';
+            if (ent.entID != entId) {
+                options += '<option value="' + ent.entID + '">' + ent.termKRQualtrics + '</option>';
             }
         });
 
@@ -119,7 +119,7 @@ var Omnisurvey_EntRivals = function ($, data, leagueId, entId) {
     }
 
 
-    // groups = the league object that has conf/div hierarchy
+    // groups = the grouping object that has conf/div hierarchy
     function createGroupOptions(groups, $select, level) {
         // initialize level if needed
         level = typeof level !== 'undefined' ? level : 0;
@@ -131,7 +131,7 @@ var Omnisurvey_EntRivals = function ($, data, leagueId, entId) {
             }
 
             const disabled = false; //childGroup.groups && childGroup.groups[0] && childGroup.groups[0].groups,
-            const selected = childGroup.id == leagueId;
+            const selected = childGroup.entID == groupingId;
 
 
             // Each subsequent child level is indented slightly more
@@ -145,9 +145,9 @@ var Omnisurvey_EntRivals = function ($, data, leagueId, entId) {
             let strOptionGroup = [
                 '<option',
                 (disabled ? ' disabled="disabled"' : ''),
-                ' value="' + childGroup.id + '"',
+                ' value="' + childGroup.entID + '"',
                 (selected ? ' selected' : ''),
-                '>' + spacer + childGroup.name,
+                '>' + spacer + childGroup.termKRQualtrics,
                 '</option>'].join('');
             let $optGroup = $(strOptionGroup).appendTo($select);
 
@@ -163,28 +163,28 @@ var Omnisurvey_EntRivals = function ($, data, leagueId, entId) {
     function init() {
         let groups = null;
 
-        if (leagueId > 0) {
-            // get the league grouping
-            groups = data.getGroupAndSiblings(leagueId);//data.getCompetitiveGroupingByEntId(entId);
+        if (groupingId > 0) {
+            // get the grouping grouping
+            groups = data.getGroupAndSiblings(groupingId);//data.getCompetitiveGroupingByEntId(entId);
             console.log(groups);
         } else {
             // TODO: INVALID DATA, DO SOMETHING
             return;
         }
 
-        // populate ents on league change
-        $question.on('change', 'select.league-select', function () {
-            changeLeague($(this));
+        // populate ents on grouping change
+        $question.on('change', 'select.grouping-select', function () {
+            changeGrouping($(this));
          });
 
-        // determine if there are sibling leagues to choose rivals from
+        // determine if there are sibling groupings to choose rivals from
         if (groups != null) {
-            let $select = $('<select class="league-select"></select>').prependTo($question.find('select').parent());
+            let $select = $('<select class="grouping-select"></select>').prependTo($question.find('select').parent());
             createGroupOptions(groups, $select);
             $select.change(); // trigger change
         } else {
             $question.find(entDropdownSelector).each(function () {
-                populateEnts($(this), leagueId);
+                populateEnts($(this), groupingId);
             });
         }
 

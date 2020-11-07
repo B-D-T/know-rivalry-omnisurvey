@@ -27,7 +27,7 @@ body#SurveyEngineBody{
 }
 
 body *{
-    border: red 1px solid !important;
+    /* border: red 1px solid !important; */
 }
 
 /*
@@ -78,17 +78,109 @@ body p {
 /*
 ######################
 SELECT RIVALS PAGE
-QID246 is the question with league & ent dropdowns and points sliders and textboxes
+QID246 is the question with grouping & ent dropdowns and points sliders and textboxes
 ######################
 */
 
-    /* #QID246 .c4 {
-        padding: 10px;
-    } */
+#rivSelTblWrapper{ /* DELETE ME */
+    border: red 2px dotted; margin: 2px; }
+/* Container for all rivalry point selection code */
+#rivSelTblWrapper{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    width: 90%;
+}
+#rivSelTblWrapper>*{
+    width: 100%;
+}
 
-    #QID246 input[type="range"] {
-        width: 100%;
+
+/* The rank for that rival (e.g., #1, #2) and the rank header */
+#rivSelTblWrapper .riv-sel-headers{
+    display:flex;
+    flex-flow: row wrap;
+    font-weight: bold;
+    font-size: 1.5em;
+    line-height: 1.5em;
+}
+
+#rivSelTblWrapper .rival-container{  /* DELETE ME */
+    border: blue 2px solid; margin: 2px; }
+/* Container row for everything needed for each rival listing (e.g., Rank, selectors & slider, Points) */
+#rivSelTblWrapper .rival-container{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#rivSelTblWrapper .rival-container>div{  /* DELETE ME */
+    border: green 2px solid; margin: 2px; }
+/* The direct children are each containers of columned-stacked elements  */
+#rivSelTblWrapper .rival-container>div{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+}
+
+    #rivSelTblWrapper .riv-sel-left{
+        flex-flow: row-wrap;
+        flex: 0 0 3em;
+        align-items:flex-start;
     }
+    .riv-sel-rank-text{
+        font-weight: bold;
+        font-size: 1.5em;
+    }
+
+
+    /*  Container holding rival combo boxes and the slider */
+    #rivSelTblWrapper .riv-sel-middle{
+        align-content: stretch;
+        flex:0 0 75%;
+    }
+
+        /* Container row within a rival selector area (the combo boxes) */
+        #rivSelTblWrapper .riv-selectors{
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-evenly;
+            align-items: flex-start;
+            align-content: flex-start;
+            width: 100%;
+        }
+            /* Dropdown box for choosing the grouping */
+            #rivSelTblWrapper select.grouping-select{
+            }
+            /* Dropdown box for choosing the entity/team */
+            #rivSelTblWrapper select.ent-select{
+            }
+        /* Rivalry points slider for a given rival  */
+        #rivSelTblWrapper input.riv-points-slider{
+        }
+
+    /* Container for showing the rivalry points box for a given rival  */
+    #rivSelTblWrapper .riv-sel-right{
+        flex: 1 1 auto;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 5px 5px;
+    }
+
+        /* Rivalry points box for a given rival  */
+        #rivSelTblWrapper .riv-sel-right input.riv-points-box{
+            width: 50px;
+            height: 1.25em;
+            text-align: center;
+
+        }
+        /* "Points" label underneath the rivalry points box for a given rival  */
+        #rivSelTblWrapper .riv-sel-right div.riv-points-box{
+            font-size: 0.7em;
+        }
+
+
     
     #QID246 input[type="range"]::-webkit-slider-runnable-track {
     background: -moz-linear-gradient(left, #fffa00 0%, #ff0000 100%); /* FF3.6-15 */
@@ -117,11 +209,11 @@ QID246 is the question with league & ent dropdowns and points sliders and textbo
     text-align: center;
     }
 
-    #QID246 .ChoiceRow .LabelWrapper label > span {
+    /* #QID246 .ChoiceRow .LabelWrapper label > span {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    }
+    } */
 
 
 /*
@@ -199,7 +291,7 @@ WELCOME PAGE
 (a/k/a, "landing page" or "splash page")
 ######################
 */
-    /* DEFAULT: Hide the league selector question to start */
+    /* DEFAULT: Hide the grouping selector question to start */
     #QID182 {
         display: none;
     }
@@ -221,16 +313,16 @@ WELCOME PAGE
             -webkit-text-stroke-color: lightgray;
         }
 
-    /* This is the error box for league selection if necessary... which we hope is never*/
-    #SplashErrorSelectLeague {
+    /* This is the error box for grouping selection if necessary... which we hope is never*/
+    #SplashErrorSelectGrouping {
         margin: auto;
         text-align: center;
         font-weight: bold;
         color: red;
     }
 
-    /* This "background" image is the league logo at the top of the welcome page */
-    #SplashWelcomeLeagueLogoDiv {
+    /* This "background" image is the grouping logo at the top of the welcome page */
+    #SplashWelcomeGroupingLogoDiv {
         /* max-width: 90vh; */
         min-height: 15vh;
         background-repeat: no-repeat;
@@ -239,28 +331,28 @@ WELCOME PAGE
         margin: 25px 0;			
     }
 
-    /* This is the text that sits just below the league logo once the user's selection is made */
+    /* This is the text that sits just below the grouping logo once the user's selection is made */
     #SplashWelcomeText {
         text-align: center;
         font-size: 1.5em;
         font-weight: bold;
     }
     
-    /* This is the button that, if visible, allows the user to change the league  */
-    #SplashChangeLeagueBtn {
+    /* This is the button that, if visible, allows the user to change the grouping  */
+    #SplashChangeGroupingBtn {
         background-color: rgba(255, 255, 255, 0.01); /* transparent, white background */
         border: none;
         margin-top: 30px;
         cursor: pointer;
     }
 
-        #SplashChangeLeagueBtn .ChangeLeagueText {
+        #SplashChangeGroupingBtn .ChangeGroupingText {
             font-size: 0.8em;
             color: rgb(50, 0, 255);
             text-align: center;
             }
 
-        #SplashChangeLeagueBtn .ChangeLeagueText:hover{
+        #SplashChangeGroupingBtn .ChangeGroupingText:hover{
             color: #ffffff;
             text-decoration: none;
             background-color: rgb(50, 0, 255);
@@ -294,7 +386,7 @@ WELCOME PAGE
             background-color: #e0e0e0;
         }
 
-    /* Footer text declaring our lack of funding from the leagues */
+    /* Footer text declaring our lack of funding from the groupings */
     #SplashDisclaimer {
         text-align: center;
         font-size: 0.6em;

@@ -1,207 +1,207 @@
 [
     {
-        "id": 1,
-        "name": "Sports",
+        "entID": 1,
+        "termKRQualtrics": "Sports",
         "grpTypeTerm": "Root",
         "grpShowSurvSelRival": false,
         "groups": [
             {
-                "id": 928,
-                "name": "Basketball (5 on 5)",
+                "entID": 928,
+                "termKRQualtrics": "Basketball (5 on 5)",
                 "grpTypeTerm": "Sport",
                 "grpShowSurvSelRival": false,
                 "groups": [
                     {
-                        "id": 2700,
-                        "name": "Men's basketball (5 on 5)",
+                        "entID": 2700,
+                        "termKRQualtrics": "Men's basketball (5 on 5)",
                         "grpTypeTerm": "Sport",
                         "grpShowSurvSelRival": false,
                         "groups": [
                             {
-                                "id": 1364,
-                                "name": "NBA",
+                                "entID": 1364,
+                                "termKRQualtrics": "NBA",
                                 "grpTypeTerm": "League",
                                 "grpShowSurvSelRival": true,
                                 "groups": [
                                     {
-                                        "id": 1366,
-                                        "name": "Eastern",
+                                        "entID": 1366,
+                                        "termKRQualtrics": "Eastern",
                                         "grpTypeTerm": "Conference",
                                         "grpShowSurvSelRival": true,
                                         "groups": [
                                             {
-                                                "id": 2656,
-                                                "name": "Atlantic",
+                                                "entID": 2656,
+                                                "termKRQualtrics": "Atlantic",
                                                 "grpTypeTerm": "Division",
                                                 "grpShowSurvSelRival": false,
                                                 "groups": [
                                                     {
-                                                        "id": 244,
-                                                        "name": "Boston Celtics"
+                                                        "entID": 244,
+                                                        "termKRQualtrics": "Boston Celtics"
                                                     },
                                                     {
-                                                        "id": 245,
-                                                        "name": "Brooklyn Nets"
+                                                        "entID": 245,
+                                                        "termKRQualtrics": "Brooklyn Nets"
                                                     },
                                                     {
-                                                        "id": 262,
-                                                        "name": "New York Knicks"
+                                                        "entID": 262,
+                                                        "termKRQualtrics": "New York Knicks"
                                                     },
                                                     {
-                                                        "id": 265,
-                                                        "name": "Philadelphia 76ers"
+                                                        "entID": 265,
+                                                        "termKRQualtrics": "Philadelphia 76ers"
                                                     },
                                                     {
-                                                        "id": 270,
-                                                        "name": "Toronto Raptors"
+                                                        "entID": 270,
+                                                        "termKRQualtrics": "Toronto Raptors"
                                                     }
                                                 ]
                                             },
                                             {
-                                                "id": 2657,
-                                                "name": "Central",
+                                                "entID": 2657,
+                                                "termKRQualtrics": "Central",
                                                 "grpTypeTerm": "Division",
                                                 "grpShowSurvSelRival": false,
                                                 "groups": [
                                                     {
-                                                        "id": 247,
-                                                        "name": "Chicago Bulls"
+                                                        "entID": 247,
+                                                        "termKRQualtrics": "Chicago Bulls"
                                                     },
                                                     {
-                                                        "id": 248,
-                                                        "name": "Cleveland Cavaliers"
+                                                        "entID": 248,
+                                                        "termKRQualtrics": "Cleveland Cavaliers"
                                                     },
                                                     {
-                                                        "id": 251,
-                                                        "name": "Detroit Pistons"
+                                                        "entID": 251,
+                                                        "termKRQualtrics": "Detroit Pistons"
                                                     },
                                                     {
-                                                        "id": 254,
-                                                        "name": "Indiana Pacers"
+                                                        "entID": 254,
+                                                        "termKRQualtrics": "Indiana Pacers"
                                                     },
                                                     {
-                                                        "id": 259,
-                                                        "name": "Milwaukee Bucks"
+                                                        "entID": 259,
+                                                        "termKRQualtrics": "Milwaukee Bucks"
                                                     }
                                                 ]
                                             },
                                             {
-                                                "id": 2658,
-                                                "name": "Southeast",
+                                                "entID": 2658,
+                                                "termKRQualtrics": "Southeast",
                                                 "grpTypeTerm": "Division",
                                                 "grpShowSurvSelRival": false,
                                                 "groups": [
                                                     {
-                                                        "id": 243,
-                                                        "name": "Atlanta Hawks"
+                                                        "entID": 243,
+                                                        "termKRQualtrics": "Atlanta Hawks"
                                                     },
                                                     {
-                                                        "id": 246,
-                                                        "name": "Charlotte Hornets"
+                                                        "entID": 246,
+                                                        "termKRQualtrics": "Charlotte Hornets"
                                                     },
                                                     {
-                                                        "id": 258,
-                                                        "name": "Miami Heat"
+                                                        "entID": 258,
+                                                        "termKRQualtrics": "Miami Heat"
                                                     },
                                                     {
-                                                        "id": 264,
-                                                        "name": "Orlando Magic"
+                                                        "entID": 264,
+                                                        "termKRQualtrics": "Orlando Magic"
                                                     },
                                                     {
-                                                        "id": 272,
-                                                        "name": "Washington Wizards"
+                                                        "entID": 272,
+                                                        "termKRQualtrics": "Washington Wizards"
                                                     }
                                                 ]
                                             }
                                         ]
                                     },
                                     {
-                                        "id": 1365,
-                                        "name": "Western",
+                                        "entID": 1365,
+                                        "termKRQualtrics": "Western",
                                         "grpTypeTerm": "Conference",
                                         "grpShowSurvSelRival": true,
                                         "groups": [
                                             {
-                                                "id": 2660,
-                                                "name": "Northwest",
+                                                "entID": 2660,
+                                                "termKRQualtrics": "Northwest",
                                                 "grpTypeTerm": "Division",
                                                 "grpShowSurvSelRival": false,
                                                 "groups": [
                                                     {
-                                                        "id": 250,
-                                                        "name": "Denver Nuggets"
+                                                        "entID": 250,
+                                                        "termKRQualtrics": "Denver Nuggets"
                                                     },
                                                     {
-                                                        "id": 260,
-                                                        "name": "Minnesota Timberwolves"
+                                                        "entID": 260,
+                                                        "termKRQualtrics": "Minnesota Timberwolves"
                                                     },
                                                     {
-                                                        "id": 263,
-                                                        "name": "Oklahoma City Thunder"
+                                                        "entID": 263,
+                                                        "termKRQualtrics": "Oklahoma City Thunder"
                                                     },
                                                     {
-                                                        "id": 267,
-                                                        "name": "Portland Trail Blazers"
+                                                        "entID": 267,
+                                                        "termKRQualtrics": "Portland Trail Blazers"
                                                     },
                                                     {
-                                                        "id": 271,
-                                                        "name": "Utah Jazz"
+                                                        "entID": 271,
+                                                        "termKRQualtrics": "Utah Jazz"
                                                     }
                                                 ]
                                             },
                                             {
-                                                "id": 2659,
-                                                "name": "Pacific",
+                                                "entID": 2659,
+                                                "termKRQualtrics": "Pacific",
                                                 "grpTypeTerm": "Division",
                                                 "grpShowSurvSelRival": false,
                                                 "groups": [
                                                     {
-                                                        "id": 252,
-                                                        "name": "Golden State Warriors"
+                                                        "entID": 252,
+                                                        "termKRQualtrics": "Golden State Warriors"
                                                     },
                                                     {
-                                                        "id": 255,
-                                                        "name": "Los Angeles Clippers"
+                                                        "entID": 255,
+                                                        "termKRQualtrics": "Los Angeles Clippers"
                                                     },
                                                     {
-                                                        "id": 256,
-                                                        "name": "Los Angeles Lakers"
+                                                        "entID": 256,
+                                                        "termKRQualtrics": "Los Angeles Lakers"
                                                     },
                                                     {
-                                                        "id": 266,
-                                                        "name": "Phoenix Suns"
+                                                        "entID": 266,
+                                                        "termKRQualtrics": "Phoenix Suns"
                                                     },
                                                     {
-                                                        "id": 268,
-                                                        "name": "Sacramento Kings"
+                                                        "entID": 268,
+                                                        "termKRQualtrics": "Sacramento Kings"
                                                     }
                                                 ]
                                             },
                                             {
-                                                "id": 2661,
-                                                "name": "Southwest",
+                                                "entID": 2661,
+                                                "termKRQualtrics": "Southwest",
                                                 "grpTypeTerm": "Division",
                                                 "grpShowSurvSelRival": false,
                                                 "groups": [
                                                     {
-                                                        "id": 249,
-                                                        "name": "Dallas Mavericks"
+                                                        "entID": 249,
+                                                        "termKRQualtrics": "Dallas Mavericks"
                                                     },
                                                     {
-                                                        "id": 253,
-                                                        "name": "Houston Rockets"
+                                                        "entID": 253,
+                                                        "termKRQualtrics": "Houston Rockets"
                                                     },
                                                     {
-                                                        "id": 257,
-                                                        "name": "Memphis Grizzlies"
+                                                        "entID": 257,
+                                                        "termKRQualtrics": "Memphis Grizzlies"
                                                     },
                                                     {
-                                                        "id": 261,
-                                                        "name": "New Orleans Pelicans"
+                                                        "entID": 261,
+                                                        "termKRQualtrics": "New Orleans Pelicans"
                                                     },
                                                     {
-                                                        "id": 269,
-                                                        "name": "San Antonio Spurs"
+                                                        "entID": 269,
+                                                        "termKRQualtrics": "San Antonio Spurs"
                                                     }
                                                 ]
                                             }
@@ -210,54 +210,54 @@
                                 ]
                             },
                             {
-                                "id": 11,
-                                "name": "Men's Spain club basketball",
+                                "entID": 11,
+                                "termKRQualtrics": "Men's Spain club basketball",
                                 "grpTypeTerm": "-99",
                                 "grpShowSurvSelRival": true,
                                 "groups": [
                                     {
-                                        "id": 20,
-                                        "name": "Liga ACB",
+                                        "entID": 20,
+                                        "termKRQualtrics": "Liga ACB",
                                         "grpTypeTerm": "League",
                                         "grpShowSurvSelRival": true,
                                         "groups": []
                                     },
                                     {
-                                        "id": 21,
-                                        "name": "LEB Oro",
+                                        "entID": 21,
+                                        "termKRQualtrics": "LEB Oro",
                                         "grpTypeTerm": "League",
                                         "grpShowSurvSelRival": true,
                                         "groups": []
                                     },
                                     {
-                                        "id": 22,
-                                        "name": "LEB Plata",
+                                        "entID": 22,
+                                        "termKRQualtrics": "LEB Plata",
                                         "grpTypeTerm": "League",
                                         "grpShowSurvSelRival": true,
                                         "groups": []
                                     },
                                     {
-                                        "id": 23,
-                                        "name": "Liga EBA",
+                                        "entID": 23,
+                                        "termKRQualtrics": "Liga EBA",
                                         "grpTypeTerm": "League?",
                                         "grpShowSurvSelRival": true,
                                         "groups": [
                                             {
-                                                "id": 24,
-                                                "name": "Group A",
+                                                "entID": 24,
+                                                "termKRQualtrics": "Group A",
                                                 "grpTypeTerm": "Group?",
                                                 "grpShowSurvSelRival": true,
                                                 "groups": [
                                                     {
-                                                        "id": 25,
-                                                        "name": "Group A-A",
+                                                        "entID": 25,
+                                                        "termKRQualtrics": "Group A-A",
                                                         "grpTypeTerm": "Sub-group?",
                                                         "grpShowSurvSelRival": true,
                                                         "groups": []
                                                     },
                                                     {
-                                                        "id": 26,
-                                                        "name": "Group A-B",
+                                                        "entID": 26,
+                                                        "termKRQualtrics": "Group A-B",
                                                         "grpTypeTerm": "Sub-group?",
                                                         "grpShowSurvSelRival": true,
                                                         "groups": []
@@ -265,28 +265,28 @@
                                                 ]
                                             },
                                             {
-                                                "id": 27,
-                                                "name": "Group B",
+                                                "entID": 27,
+                                                "termKRQualtrics": "Group B",
                                                 "grpTypeTerm": "Group?",
                                                 "grpShowSurvSelRival": true,
                                                 "groups": []
                                             },
                                             {
-                                                "id": 28,
-                                                "name": "Group C",
+                                                "entID": 28,
+                                                "termKRQualtrics": "Group C",
                                                 "grpTypeTerm": "Group?",
                                                 "grpShowSurvSelRival": true,
                                                 "groups": [
                                                     {
-                                                        "id": 29,
-                                                        "name": "Group C-A",
+                                                        "entID": 29,
+                                                        "termKRQualtrics": "Group C-A",
                                                         "grpTypeTerm": "Sub-group?",
                                                         "grpShowSurvSelRival": true,
                                                         "groups": []
                                                     },
                                                     {
-                                                        "id": 30,
-                                                        "name": "Group C-B",
+                                                        "entID": 30,
+                                                        "termKRQualtrics": "Group C-B",
                                                         "grpTypeTerm": "Sub-group?",
                                                         "grpShowSurvSelRival": true,
                                                         "groups": []
@@ -294,21 +294,21 @@
                                                 ]
                                             },
                                             {
-                                                "id": 31,
-                                                "name": "Group D",
+                                                "entID": 31,
+                                                "termKRQualtrics": "Group D",
                                                 "grpTypeTerm": "Group?",
                                                 "grpShowSurvSelRival": true,
                                                 "groups": [
                                                     {
-                                                        "id": 32,
-                                                        "name": "Group D-A",
+                                                        "entID": 32,
+                                                        "termKRQualtrics": "Group D-A",
                                                         "grpTypeTerm": "Sub-group?",
                                                         "grpShowSurvSelRival": true,
                                                         "groups": []
                                                     },
                                                     {
-                                                        "id": 33,
-                                                        "name": "Group D-B",
+                                                        "entID": 33,
+                                                        "termKRQualtrics": "Group D-B",
                                                         "grpTypeTerm": "Sub-group?",
                                                         "grpShowSurvSelRival": true,
                                                         "groups": []
@@ -316,8 +316,8 @@
                                                 ]
                                             },
                                             {
-                                                "id": 34,
-                                                "name": "Group E",
+                                                "entID": 34,
+                                                "termKRQualtrics": "Group E",
                                                 "grpTypeTerm": "Group?",
                                                 "grpShowSurvSelRival": true,
                                                 "groups": []

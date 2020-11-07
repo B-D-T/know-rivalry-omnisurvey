@@ -26,7 +26,7 @@
             <div id="ents-container">
                 <div class="ents-filter-header">
                     <div class="header-text">Filter:</div>
-                    <select id="leagueFilter"></select>
+                    <select id="groupingFilter"></select>
                 </div>
                 <!--<div id="DivFilterReset" class="FilterResetText">Reset all filters</div>-->
                 <!--<div id="filters"></div>-->
@@ -60,7 +60,7 @@
         
         (function () {
             const OMNISURVEY_TEST = false;
-            let leagueId = -1;
+            let groupingId = -1;
             let favoriteEntSelectedHandler;
             const self = this;
 
@@ -71,8 +71,8 @@
                   TESTING MODE
                 *****************************************************/
                 const searchParams = new URLSearchParams(window.location.search);
-                if (searchParams.has('lgID')) {
-                    leagueId = parseInt(searchParams.get('lgID'));
+                if (searchParams.has('grpID')) {
+                    groupingId = parseInt(searchParams.get('grpID'));
                 }
 
                 favoriteEntSelectedHandler = function () {
@@ -87,7 +87,7 @@
 
                 Qualtrics.SurveyEngine.addOnload(function () {
                     const qse = Qualtrics.SurveyEngine;
-                    leagueId = parseInt(qse.getEmbeddedData('lgID'));
+                    groupingId = parseInt(qse.getEmbeddedData('grpID'));
 
                     favoriteEntSelectedHandler = function () {
                         qse.setEmbeddedData('FavObj', this.FavoriteEntName);
@@ -109,8 +109,8 @@
             }
 
             function init() {
-                //var leagueData = Omnisurvey_Data.getEntsByLeague(leagueId);
-                //leagueData.divisionLevelTerms = leagueLevelTerms;
+                //var groupingData = Omnisurvey_Data.getEntsByGrouping(groupingId);
+                //groupingData.divisionLevelTerms = groupingLevelTerms;
                 if (window.hasOwnProperty('omnisurvey_data') && omnisurvey_data.dataLoaded) {
                     loadQuestion();
                 } else {
@@ -124,7 +124,7 @@
 
 
             function loadQuestion() {
-                var omnisurvey_FavoriteEnts = new Omnisurvey_FavoriteEnts(jQuery, window.omnisurvey_data, leagueId); // this is what loads the Omnisurvey
+                var omnisurvey_FavoriteEnts = new Omnisurvey_FavoriteEnts(jQuery, window.omnisurvey_data, groupingId); // this is what loads the Omnisurvey
                 omnisurvey_FavoriteEnts.favoriteEntSelectedHandler = favoriteEntSelectedHandler;
             }
         })();

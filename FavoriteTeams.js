@@ -1,6 +1,6 @@
 'use strict';
 
-var Omnisurvey_FavoriteEnts = function ($, data, leagueId) {
+var Omnisurvey_FavoriteEnts = function ($, data, groupingId) {
 
 	const self = this;
 
@@ -9,8 +9,8 @@ var Omnisurvey_FavoriteEnts = function ($, data, leagueId) {
 	this.FavoriteEntId = -1;
 	this.FavoriteEntName = "";
 
-	let selectedLeague = null;
-	let $leagueFilter = $('#leagueFilter');
+	let selectedGrouping = null;
+	let $groupingFilter = $('#groupingFilter');
 	let $favEntBtns = null;
 	let $ents = $('#ents');
 	let $selectedEntLogo = $('#selected-ent-logo');
@@ -21,7 +21,7 @@ var Omnisurvey_FavoriteEnts = function ($, data, leagueId) {
 
 	const strEntLogoRootDir = 'https://knowrivalry.com/images/teamlogos/'; // This is the folder that holds the logos (SVGs) for each ent
 
-	// groups = the league object that has conf/div hierarchy
+	// groups = the grouping object that has conf/div hierarchy
 	function createGroupOptions(groups, $select, level) {
 		// initialize level if needed
 		level = typeof level !== 'undefined' ? level : 0;
@@ -40,14 +40,14 @@ var Omnisurvey_FavoriteEnts = function ($, data, leagueId) {
 			}
 
 			const disabled = false; //childGroup.groups && childGroup.groups[0] && childGroup.groups[0].groups,
-			const selected = childGroup.id == leagueId;
+			const selected = childGroup.entID == groupingId;
 
 			const strOptionGroup = [
 				'<option',
 				(disabled ? ' disabled="disabled"' : ''),
-				' value="' + childGroup.id + '"',
+				' value="' + childGroup.entID + '"',
 				(selected ? ' selected' : ''),
-				'>' + spacer + childGroup.name,
+				'>' + spacer + childGroup.termKRQualtrics,
 				'</option>'].join('');
 			const $optGroup = $(strOptionGroup).appendTo($select);
 
@@ -64,7 +64,7 @@ var Omnisurvey_FavoriteEnts = function ($, data, leagueId) {
 
 		if (entId > 0) {
 			const ent = data.getGroupById(entId);
-			const imgPath = strEntLogoRootDir + 'logo_team'+ent.id+'.svg';
+			const imgPath = strEntLogoRootDir + 'logo_team'+ent.entID+'.svg';
 
 			// set the logo and the ent name
 			$selectedEntLogo.css('background-image', 'url(' + imgPath + ')');
@@ -99,12 +99,12 @@ var Omnisurvey_FavoriteEnts = function ($, data, leagueId) {
 		}
 	}
 	function createFavEntButtons() {
-		const ents = data.getEntsByGroup(leagueId, 'name');
+		const ents = data.getEntsByGroup(groupingId, 'termKRQualtrics');
 
 		// Populate the ent selection logos and ent names
 		ents.forEach(function (ent) {
-			const strEntImgFilename = strEntLogoRootDir + 'logo_team' + ent.id + '.svg';
-			$ents.append('<div style="background-image: url(' + strEntImgFilename + ')" id="btnEntID' + ent.id + '" class="ClassFavEnt" data-id="' + ent.id + '">' + ent.name + '</div>');
+			const strEntImgFilename = strEntLogoRootDir + 'logo_team' + ent.entID + '.svg';
+			$ents.append('<div style="background-image: url(' + strEntImgFilename + ')" id="btnEntID' + ent.entID + '" class="ClassFavEnt" data-entID="' + ent.entID + '">' + ent.termKRQualtrics + '</div>');
 		});
 
 		$favEntBtns = $('.ClassFavEnt');
@@ -114,7 +114,7 @@ var Omnisurvey_FavoriteEnts = function ($, data, leagueId) {
 	function favEntClicked() {
 		var $this = $(this);
 
-		selectEnt($this.data('id'), $this.text());
+		selectEnt($this.data('entID'), $this.text());
 	}
 
 
@@ -137,7 +137,7 @@ var Omnisurvey_FavoriteEnts = function ($, data, leagueId) {
 			const ents = data.getEntsByGroup(groupId);
 			$.each(ents, function (index, ent) {
 				//if (ent.divisionLevels[filterLevel-1] == filterValue) {
-				$favEntBtns.filter('[data-id=' + ent.id + ']').show();
+				$favEntBtns.filter('[data-entID=' + ent.entID + ']').show();
 				//}
 			});
 		}
@@ -149,16 +149,16 @@ var Omnisurvey_FavoriteEnts = function ($, data, leagueId) {
 	
 
 	function init() {
-		// get an object of the league data
-		selectedLeague = data.getGroupById(leagueId);
+		// get an object of the grouping data
+		selectedGrouping = data.getGroupById(groupingId);
 
-		if (selectedLeague === null) {
+		if (selectedGrouping === null) {
 			// TODO: INVALID DATA, NOW WHAT?
 			return;
 		}
 
-		createGroupOptions([selectedLeague], $leagueFilter);
-		$leagueFilter.on('change', filterChanged);
+		createGroupOptions([selectedGrouping], $groupingFilter);
+		$groupingFilter.on('change', filterChanged);
 
 
 		// Create FavEnt buttons
