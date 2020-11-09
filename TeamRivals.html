@@ -72,7 +72,7 @@
                         <div id="rivalPointsErrorBox" class="rivalry-points-error"></div>
                         <div id="rivSelTblHeader" class="riv-sel-headers">
                             <div id="rivSelHeaderRank" class="riv-sel-left">
-                                <div>Rank</div>
+                                <div>#</div>
                             </div>
                             <div id="rivSelHeaderMiddle" class="riv-sel-middle">
                                 <div id="rivSelHeaderSelectors">League and team</div>
@@ -154,7 +154,7 @@
                     let newHTML = strTemplateHTML.replace(new RegExp( templateRivalKey, "g"),strNewRivalKey);
                     newHTML = newHTML.replace(/\#1/,'#'+rivNum);
                     $curContainer = jQuery('#' + strCurRivalKey + 'Container');
-                    $(newHTML).insertAfter($curContainer);
+                    jQuery(newHTML).insertAfter($curContainer);
                 };
 
                 // Enable the dropdown boxes for Rival01
@@ -239,6 +239,10 @@
 
                     groupingId = parseInt(qse.getEmbeddedData('grpID'));
                     entId = parseInt(qse.getEmbeddedData('FavObjEntID'));
+
+
+                    // Create the HTML code for the rest of the rivalry rows
+                    createRivalContainers();
 
                     // Hookup Rivalry Points stuff
 

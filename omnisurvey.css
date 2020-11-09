@@ -176,7 +176,7 @@ QID246 is the question with grouping & ent dropdowns and points sliders and text
 
     /* Container for showing the rivalry points box for a given rival  */
     #rivSelTblWrapper .riv-sel-right{
-        flex: 1 1 55px;
+        flex: 1 1 65px;
         max-width: 150px;
         align-self: flex-start;
         justify-content: center;
@@ -185,7 +185,7 @@ QID246 is the question with grouping & ent dropdowns and points sliders and text
 
         /* Rivalry points box for a given rival  */
         #rivSelTblWrapper .riv-sel-right input.riv-points-box{
-            width: 55px;
+            width: 65px;
             min-height: 1.3em;
             text-align: center;
             font-size:1.2em; font-weight: bold;

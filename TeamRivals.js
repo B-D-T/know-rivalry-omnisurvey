@@ -53,7 +53,7 @@ var Omnisurvey_EntRivals = function ($, data, groupingId, entId) {
         const $nextRival = $nextRivContainer($select);
 
         // Check if the entity dropdown is blank, then enable & disable accordingly.
-        if ($select.val() === '') {
+        if ($select.val() === '' || $select.val()==0) {
             // Disable the rivalry points input box and set the value to 0 for this row and the next row
             const $nextRivalPointsInput = $nextRival.find(strRivalPointsBoxSelector);
             $.each([$rivalPointsInput, $nextRivalPointsInput],function(idx,elem){
@@ -135,6 +135,8 @@ var Omnisurvey_EntRivals = function ($, data, groupingId, entId) {
             $rivalryPointsTotal.text('Assigned: ' + rivalPointSum);
 
             const intRivalPointsRemaining = 100-rivalPointSum;
+
+
             if (rivalPointSum == 100) {
 
                 // Set the error message info
@@ -243,7 +245,7 @@ var Omnisurvey_EntRivals = function ($, data, groupingId, entId) {
         // Have the points box number change when the user moves the slider
         const $range = $('.riv-points-slider');
         $range.on('input change', function () {
-            const $this = $(this);
+            let $this = $(this);
             // Select the correct points box for this rival by taking the current id (e.g., Rival02PointsSlider) and returning Rival02Points
             const pointsBox = $this.attr('id').replace('PointsSlider', 'Points');
             // Set the points box to be the number of rivalry points
