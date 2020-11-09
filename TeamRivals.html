@@ -293,14 +293,14 @@
                                     rivpoints = $points.val();
 
 
-                                return jQuery.when(qse.setEmbeddedData(rivalKey + 'EntID', entID))
+                                return jQuery.when(qse.setEmbeddedData(strRivalKey + 'EntID', entID))
                                     .then(function () {
                                         if (entID) {
                                             intNumOfRivalsListed++;
-                                            qse.setEmbeddedData(rivalKey + 'Name', name);
+                                            qse.setEmbeddedData(strRivalKey + 'Name', name);
                                         }
                                     })
-                                    .then(qse.setEmbeddedData(rivalKey + 'Points', rivpoints))
+                                    .then(qse.setEmbeddedData(strRivalKey + 'Points', rivpoints))
                                     .done(console.log("entID #" + entID + " stored to embedded data: " + name + " (" + rivpoints + " points)"));
                             }))
                             .done(
