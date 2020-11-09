@@ -26,10 +26,6 @@ body#SurveyEngineBody{
     display: none;
 }
 
-body *{
-    /* border: red 1px solid !important; */
-}
-
 /*
 ######################
 TESTING
@@ -53,6 +49,9 @@ fieldset {
 }
 .Skin .SkinInner {
     padding-top:30px;
+}
+body *{
+    /* border: red 1px solid !important; */
 }
 
 
@@ -82,8 +81,6 @@ QID246 is the question with grouping & ent dropdowns and points sliders and text
 ######################
 */
 
-#rivSelTblWrapper{ /* DELETE ME */
-    border: red 2px dotted; margin: 2px; }
 /* Container for all rivalry point selection code */
 #rivSelTblWrapper{
     display: flex;
@@ -91,32 +88,39 @@ QID246 is the question with grouping & ent dropdowns and points sliders and text
     justify-content: flex-start;
     align-items: flex-start;
     align-content: flex-start;
-    width: 90%;
+    /* width: 90%; */
+    max-width: 800px;
 }
 #rivSelTblWrapper>*{
     width: 100%;
 }
 
 
-/* The rank for that rival (e.g., #1, #2) and the rank header */
+/* Headers for the selection table*/
 #rivSelTblWrapper .riv-sel-headers{
     display:flex;
     flex-flow: row wrap;
     font-weight: bold;
-    font-size: 1.5em;
-    line-height: 1.5em;
+    font-size: 1.4em; line-height: 1.4em;
+    margin-bottom: 2px;
+    column-gap: 3px;
+}
+#rivSelTblWrapper .pts-display-totals{
+    min-height:8pt;
+    font-size:8pt;
+    font-weight:normal;
+    line-height:8pt;
+    color:black;
 }
 
-#rivSelTblWrapper .rival-container{  /* DELETE ME */
-    border: blue 2px solid; margin: 2px; }
 /* Container row for everything needed for each rival listing (e.g., Rank, selectors & slider, Points) */
 #rivSelTblWrapper .rival-container{
     display: flex;
     flex-flow: row wrap;
+    column-gap: 3px;
+    margin-bottom: 15px;
 }
 
-#rivSelTblWrapper .rival-container>div{  /* DELETE ME */
-    border: green 2px solid; margin: 2px; }
 /* The direct children are each containers of columned-stacked elements  */
 #rivSelTblWrapper .rival-container>div{
     display: flex;
@@ -125,96 +129,98 @@ QID246 is the question with grouping & ent dropdowns and points sliders and text
 }
 
     #rivSelTblWrapper .riv-sel-left{
-        flex-flow: row-wrap;
-        flex: 0 0 3em;
+        flex-flow: row wrap;
+        flex: 0 1 60px;
+        min-width: 50px;
         align-items:flex-start;
     }
     .riv-sel-rank-text{
         font-weight: bold;
-        font-size: 1.5em;
+        font-size: 1.4em;
     }
 
 
     /*  Container holding rival combo boxes and the slider */
+
     #rivSelTblWrapper .riv-sel-middle{
         align-content: stretch;
-        flex:0 0 75%;
+        flex:1 1 auto;
+        max-width: 500px;
     }
 
         /* Container row within a rival selector area (the combo boxes) */
         #rivSelTblWrapper .riv-selectors{
             display: flex;
             flex-flow: row wrap;
-            justify-content: space-evenly;
+            justify-content: flex-start;
             align-items: flex-start;
             align-content: flex-start;
-            width: 100%;
+            /* width: 100%; */
+            row-gap: 3px;
         }
             /* Dropdown box for choosing the grouping */
             #rivSelTblWrapper select.grouping-select{
+                margin: auto 20px 0px 5px;
             }
             /* Dropdown box for choosing the entity/team */
             #rivSelTblWrapper select.ent-select{
+                margin-left:5px;
             }
+
+
         /* Rivalry points slider for a given rival  */
         #rivSelTblWrapper input.riv-points-slider{
+            align-self: center;
+            width: 97%;
         }
 
     /* Container for showing the rivalry points box for a given rival  */
     #rivSelTblWrapper .riv-sel-right{
-        flex: 1 1 auto;
-        align-items: center;
+        flex: 1 1 55px;
+        max-width: 150px;
+        align-self: flex-start;
         justify-content: center;
-        padding: 10px 5px 5px;
+        /* padding: 10px 5px 5px; */
     }
 
         /* Rivalry points box for a given rival  */
         #rivSelTblWrapper .riv-sel-right input.riv-points-box{
-            width: 50px;
-            height: 1.25em;
+            width: 55px;
+            min-height: 1.3em;
             text-align: center;
+            font-size:1.2em; font-weight: bold;
+            margin: 2px auto auto 10px;
 
         }
-        /* "Points" label underneath the rivalry points box for a given rival  */
-        #rivSelTblWrapper .riv-sel-right div.riv-points-box{
-            font-size: 0.7em;
-        }
-
 
     
-    #QID246 input[type="range"]::-webkit-slider-runnable-track {
-    background: -moz-linear-gradient(left, #fffa00 0%, #ff0000 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left, #fffa00 0%,#ff0000 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right, #fffa00 0%,#ff0000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    #rivSelTblWrapper input.riv-points-slider::-webkit-slider-runnable-track {
+    background: -moz-linear-gradient(left, #ffffff 0%, #000000 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #ffffff 0%,#000000 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #ffffff 0%,#000000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fffa00', endColorstr='#ff0000',GradientType=1 ); /* IE6-9 */
     }
 
-    #QID246 input[type="range"]::-moz-range-track {
+    #rivSelTblWrapper input.riv-points-slider::-moz-range-track {
 
     }
-    #QID246 input[type="range"]::-ms-track {
+    #rivSelTblWrapper input.riv-points-slider::-ms-track {
 
     }
 
-    #QID246 .CSTotalInput {
-    color: red;
+
+    #rivSelTblWrapper .valid-point-total {
+        color: green;
+        }
+    
+    #rivSelTblWrapper .rivalry-points-error {
+        color: red;
     }
-
-    #QID246 .CSTotalInput.valid-point-total {
-    color: green;
+    #rivalPointsErrorBox{
+        min-height: 25px;
+        text-align: center;
     }
-
-    #QID246 .rivalry-points-error {
-    color: red;
-    text-align: center;
-    }
-
-    /* #QID246 .ChoiceRow .LabelWrapper label > span {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    } */
-
+    
 
 /*
 ######################

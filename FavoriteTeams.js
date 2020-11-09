@@ -104,7 +104,7 @@ var Omnisurvey_FavoriteEnts = function ($, data, groupingId) {
 		// Populate the ent selection logos and ent names
 		ents.forEach(function (ent) {
 			const strEntImgFilename = strEntLogoRootDir + 'logo_team' + ent.entID + '.svg';
-			$ents.append('<div style="background-image: url(' + strEntImgFilename + ')" id="btnEntID' + ent.entID + '" class="ClassFavEnt" data-entID="' + ent.entID + '">' + ent.termKRQualtrics + '</div>');
+			$ents.append('<div style="background-image: url(' + strEntImgFilename + ')" id="btnEntID' + ent.entID + '" class="ClassFavEnt" data-entid="' + ent.entID + '">' + ent.termKRQualtrics + '</div>');
 		});
 
 		$favEntBtns = $('.ClassFavEnt');
@@ -114,7 +114,8 @@ var Omnisurvey_FavoriteEnts = function ($, data, groupingId) {
 	function favEntClicked() {
 		var $this = $(this);
 
-		selectEnt($this.data('entID'), $this.text());
+		// The entID must be lowercase because the 'data' attribute automatically lowercases everything
+		selectEnt($this.data('entid'), $this.text());
 	}
 
 
@@ -137,7 +138,7 @@ var Omnisurvey_FavoriteEnts = function ($, data, groupingId) {
 			const ents = data.getEntsByGroup(groupId);
 			$.each(ents, function (index, ent) {
 				//if (ent.divisionLevels[filterLevel-1] == filterValue) {
-				$favEntBtns.filter('[data-entID=' + ent.entID + ']').show();
+				$favEntBtns.filter('[data-entid=' + ent.entID + ']').show();
 				//}
 			});
 		}

@@ -208,28 +208,6 @@
                                         ]
                                     }
                                 ]
-                            },
-                            {
-                                "id": 1111111,
-                                "termKRQualtrics": "Men's Spain club basketball",
-                                "grpTypeTerm": "-99",
-                                "grpShowSurvSelRival": true,
-                                "groups": [
-                                    {
-                                        "id": 1111120,
-                                        "termKRQualtrics": "Liga ACB",
-                                        "grpTypeTerm": "League",
-                                        "grpShowSurvSelRival": true,
-                                        "groups": []
-                                    },
-                                    {
-                                        "id": 1111121,
-                                        "termKRQualtrics": "LEB Oro",
-                                        "grpTypeTerm": "League",
-                                        "grpShowSurvSelRival": true,
-                                        "groups": []
-                                    }
-                                ]
                             }
                         ]
                     }

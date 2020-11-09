@@ -103,7 +103,7 @@ var Omnisurvey_GroupingSelection = function($, data, groupingId, surveyId) {
 	// change the grouping showcased on the page
 	function setGroupingInfo(groupingId) { // Danny named this selectGrouping(id)
 		$storageGroupingId.text(groupingId); // Store the groupingId in a hidden div on the page
-		const groupingSlug = data.getGrouping(groupingId).groupingSlug;
+		const groupingSlug = data.getGrouping(groupingId).grpSlug;
 		const groupingImgFilename = strGroupingImageRootDir + 'league_' + groupingSlug + '-md.png';
 		$SplashWelcomeGroupingLogoDiv.css('background-image', 'url(' + groupingImgFilename + ')');
 	}

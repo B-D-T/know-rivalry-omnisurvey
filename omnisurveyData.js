@@ -17,7 +17,7 @@ var Omnisurvey_Data = function ($) {
     // I added this just to define the paths up front and switch between local an GitHub. Just comment out what you're not using.
     let pathBase = ""; // local
     // pathBase = "https://auxiliarydev.github.io/know-rivalry-omnisurvey/";
-    pathBase = "https://b-d-t.github.io/know-rivalry-omnisurvey/";
+    // pathBase = "https://b-d-t.github.io/know-rivalry-omnisurvey/";
     const pathJSON = {
         "GroupingHierarchy": pathBase + 'data/groupingHierarchy.json',
         "Groupings": pathBase + 'data/groupings.json', // tbljsGroupings
@@ -83,11 +83,7 @@ var Omnisurvey_Data = function ($) {
     // This is passed a groupingId
     this.getGroupById = function (groupId) {
         // Filter the Grouping Hierarchy JSON to find the children of this Id
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // HIGH PRIORITY FIX
-        // This filters for all the IDs, so filtering on 10 pulls NBA and Auburn. I need to fix the IDs to use all the real ones from the database.
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        const group = self.filterGroups(GroupingHierarchy, 'entID', groupId);
+        let group = self.filterGroups(GroupingHierarchy, 'entID', groupId);
 
         if (group.length > 0) {
             return group[0];
@@ -96,7 +92,8 @@ var Omnisurvey_Data = function ($) {
     };
 
     this.getEntsByGroup = function (groupId, sort) {
-        let groups = getLowestLevelGroups(self.getGroupById(groupId).groups);
+
+        var groups = getLowestLevelGroups(self.getGroupById(groupId).groups);
 
         if (groups === null || groups.length <= 0) {
             return null;

@@ -3,13 +3,22 @@
 var Omnisurvey_EntRivals = function ($, data, groupingId, entId) {
 
 
-// WAS: Other than isValidRivalsSelection, all of these were const instead of let
     // const questionId = 'QID246';
+    const strEntDropdownSelector = 'select.ent-select';
+    const strRivalPointsBoxSelector = 'input.riv-points-box';
+
     let $question = $('#rivSelTblWrapper');
-    let $rivalryPointsInputs = $question.find('.ChoiceRow input[type="text"]');
-    let $rivalryPointsTotal = $('.CSTotal input');
-    let $rivalryPointsError = $('<div class="rivalry-points-error"></div>').appendTo($question);
-    let entDropdownSelector = 'select:not(.grouping-select)';
+    let $rivalPointsInputs = $question.find(strRivalPointsBoxSelector);
+    let $rivalryPointsError = $('#rivalPointsErrorBox');
+    let $rivalryPointsTotal = $('.pts-allocated');
+    let $rivalPointsRemaining = $(".pts-remaining");
+
+    // Returns the containers for the current or next rival row when passed a jQuery object.
+    // E.g., if a user changes the Rival01 dropdown, pass that here and it will return the Rival01 container, from which you can use .find() to pull any of its elements
+    const $curRivContainer = ($select) => $select.closest('.rival-container');
+    const $nextRivContainer = ($select) => $curRivContainer($select).next('.rival-container');
+
+    const survIsInTestMode = $('#SurveyInTestMode');
 
 
     // Populate ents in second dropdown when user changes the grouping
@@ -37,22 +46,37 @@ var Omnisurvey_EntRivals = function ($, data, groupingId, entId) {
     }
 
     function selectEnt($select) {
-        const $rivalryPointsInput = $select.closest('.ChoiceRow').next().find('input');
-    
+        // $select is the rival dropdown element that was selected by the user (e.g., cboRival01)
+
+        // Select the rivalry points inputs for this rival row (the box and the slider)
+        const $rivalPointsInput = $curRivContainer($select).find('input');
+        const $nextRival = $nextRivContainer($select);
+
+        // Check if the entity dropdown is blank, then enable & disable accordingly.
         if ($select.val() === '') {
-          $rivalryPointsInput.attr({disabled: 'disabled', min: '0'}).val(0);
+            // Disable the rivalry points input box and set the value to 0 for this row and the next row
+            const $nextRivalPointsInput = $nextRival.find(strRivalPointsBoxSelector);
+            $.each([$rivalPointsInput, $nextRivalPointsInput],function(idx,elem){
+                elem.attr({disabled: 'disabled', min: '0'}).val(0);
+            });
+            $nextRival.find('.grouping-select, .ent-select').attr({disabled:'disabled'});
         } else {
-          $rivalryPointsInput.removeAttr('disabled').attr({min: '1'}).val(1);
+            // Enable this rival's input box
+            $rivalPointsInput.removeAttr('disabled');
+            // If the points box as a value in it, leave the value. Otherwise, set the box to =1
+            if (!$rivalPointsInput.val()){$rivalPointsInput.attr({min: '1'}).val(1)};
+            // Enable the following rival selection boxes (if that rival row exists)
+            $nextRival.find('.grouping-select, .ent-select').removeAttr('disabled');
         }
     
         // trigger change
-        $rivalryPointsInput.change();
+        $rivalPointsInput.change();
     }
 
     function validate() {
         let isValidRivalsSelection = false;
         
-        isValidRivalsSelection = check100Points();
+        isValidRivalsSelection = check100Points();       
         nextBtn(isValidRivalsSelection);
 
         function nextBtn(enableBtn){
@@ -98,21 +122,49 @@ var Omnisurvey_EntRivals = function ($, data, groupingId, entId) {
             const strErrorMsg = "Rivalry points must total 100";
             let rivalPointSum = 0;
 
+            // Start with a clean slate
+            $rivalryPointsTotal.removeClass(['valid-point-total', 'rivalry-points-error']); 
+            $rivalPointsRemaining.removeClass(['valid-point-total', 'rivalry-points-error']); 
+
             // Add all the points in rivalry points inputs fields
-            $rivalryPointsInputs.each(function () {
+            $rivalPointsInputs.each(function () {
                 rivalPointSum += Number($(this).val());
             });
 
-            // Update the total cell at the bottom
-            $rivalryPointsTotal.val(rivalPointSum);
+            // Update the total points assigned div
+            $rivalryPointsTotal.text('Assigned: ' + rivalPointSum);
 
+            const intRivalPointsRemaining = 100-rivalPointSum;
             if (rivalPointSum == 100) {
+
+                // Set the error message info
                 $rivalryPointsTotal.addClass('valid-point-total');
                 setErrorMsg(strErrorMsg, 'hide'); // hide error message
+
+                // Update the points remaining div
+                $rivalPointsRemaining.addClass('valid-point-total');
+                $rivalPointsRemaining.text('All points allocated');
+    
                 return true;
+
             } else {
-                $rivalryPointsTotal.removeClass('valid-point-total');
+                // Set the error message info
                 setErrorMsg(strErrorMsg, 'show',{rivalPointSum}); // show error message
+
+                // Update the points remaining div
+                const displayPts = Math.abs(intRivalPointsRemaining);
+                if (rivalPointSum > 100){
+                    $rivalPointsRemaining.text('Over: ' + displayPts);     
+                    $rivalryPointsTotal.addClass('rivalry-points-error');  
+                    $rivalPointsRemaining.addClass('rivalry-points-error');
+                } else {
+                    $rivalPointsRemaining.text('Available: ' + displayPts);
+                    // The remaining points are 1-100, which is okay. Don't show an error, and don't so success.
+                    $rivalryPointsTotal.removeClass(['valid-point-total', 'rivalry-points-error']);
+                    $rivalPointsRemaining.removeClass(['valid-point-total', 'rivalry-points-error']);
+                }
+                
+
                 return false;
             }
         }
@@ -141,7 +193,6 @@ var Omnisurvey_EntRivals = function ($, data, groupingId, entId) {
                 spacer += '&nbsp;';
             }
 
-// WAS: I switched both of these to let
             let strOptionGroup = [
                 '<option',
                 (disabled ? ' disabled="disabled"' : ''),
@@ -150,6 +201,7 @@ var Omnisurvey_EntRivals = function ($, data, groupingId, entId) {
                 '>' + spacer + childGroup.termKRQualtrics,
                 '</option>'].join('');
             let $optGroup = $(strOptionGroup).appendTo($select);
+
 
             // Iterate on itself. Use the level argument to avoid infinite looping
             if (childGroup.groups) {
@@ -161,12 +213,12 @@ var Omnisurvey_EntRivals = function ($, data, groupingId, entId) {
 
 
     function init() {
+        if (survIsInTestMode){console.log("TeamRivals.js running in test mode.")};
         let groups = null;
 
         if (groupingId > 0) {
             // get the grouping grouping
             groups = data.getGroupAndSiblings(groupingId);//data.getCompetitiveGroupingByEntId(entId);
-            console.log(groups);
         } else {
             // TODO: INVALID DATA, DO SOMETHING
             return;
@@ -175,42 +227,48 @@ var Omnisurvey_EntRivals = function ($, data, groupingId, entId) {
         // populate ents on grouping change
         $question.on('change', 'select.grouping-select', function () {
             changeGrouping($(this));
-         });
+            });
 
         // determine if there are sibling groupings to choose rivals from
         if (groups != null) {
-            let $select = $('<select class="grouping-select"></select>').prependTo($question.find('select').parent());
+            let $select = $('.grouping-select');
             createGroupOptions(groups, $select);
             $select.change(); // trigger change
         } else {
-            $question.find(entDropdownSelector).each(function () {
+            $question.find(strEntDropdownSelector).each(function () {
                 populateEnts($(this), groupingId);
             });
         }
 
-        // change the rivalry points inputs to range
-        const $range = $('<input type="range" min="0" max="100" disabled="disabled" class="points-range" />');
+        // Have the points box number change when the user moves the slider
+        const $range = $('.riv-points-slider');
         $range.on('input change', function () {
             const $this = $(this);
-            $this.next('input').val($this.val());
+            // Select the correct points box for this rival by taking the current id (e.g., Rival02PointsSlider) and returning Rival02Points
+            const pointsBox = $this.attr('id').replace('PointsSlider', 'Points');
+            // Set the points box to be the number of rivalry points
+            $('#' + pointsBox).val($this.val());
             validate();
         });
 
-        $rivalryPointsInputs
-            .attr({ type: 'number', min: 0, max: 100, disabled: 'disabled' })
-            .before($range)
-            .on('input change', function () {
+        // Have the slider change if the user enters a number in the points box
+        $rivalPointsInputs.on('input change', function () {
                 let $this = $(this);
-                $this.prev('input').val($this.val());
+                const pointsSlider = $this.attr('id').replace('Points', 'PointsSlider');
+                $('#' + pointsSlider).val($this.val());
                 validate();
             });
 
-        // best way to determine ent selection dropdown currently
-        $question.on('change', entDropdownSelector, function() {
+        // Whenever the Qualtrics question changes,
+        // find all the SELECT elements (dropdowns) that do NOT have 'grouping-select' as a class.
+        // 
+        $question.on('change', strEntDropdownSelector, function() {
             selectEnt($(this));
         });
 
     }
 
+    // The first thing to do is create the rest of the HTML.
+    // After that, I can run the init() like normal.
     init();
 };

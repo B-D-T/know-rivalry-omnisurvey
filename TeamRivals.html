@@ -69,58 +69,47 @@
                     </div>
 
                     <div id="rivSelTblWrapper">
+                        <div id="rivalPointsErrorBox" class="rivalry-points-error"></div>
                         <div id="rivSelTblHeader" class="riv-sel-headers">
                             <div id="rivSelHeaderRank" class="riv-sel-left">
                                 <div>Rank</div>
                             </div>
-                            <div class="riv-sel-middle">
-                                <div id="rivSelHeaderSelectors" style="text-align: center;">League and team</div>
+                            <div id="rivSelHeaderMiddle" class="riv-sel-middle">
+                                <div id="rivSelHeaderSelectors">League and team</div>
                             </div>
-                            <div id="rivSelHeaderPoints" class="riv-sel-right" style="padding: 0;">
-                                <div style="text-align: center;">Points</div>
+                            <div id="rivSelHeaderRight" class="riv-sel-right">
+                                <div id="rivSelHeaderPoints">Points</div>
+                                <div id="pointsDisplayTotals" class="pts-display-totals">
+                                    <div id="rivSelHeaderPointsAllocated" class="pts-allocated">
+                                        Assigned: 0
+                                    </div>
+                                    <div id="rivSelHeaderPointsRemaining" class="pts-remaining">
+                                        Available: 100
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div id="Rival01Container" class="rival-container ChoiceRow">
+
+                        <div id="Rival01Container" class="rival-container">
                             <div id="Rival01Left" class="riv-sel-left">
                                 <div id="Rival01RankNum" class="riv-sel-rank-text">#1</div>
                             </div>
 
                             <div id="Rival01Middle" class="riv-sel-middle">
                                 <div id="Rival01Selectors" class="riv-selectors">
-                                    <select id="cboGroupingRival01" class="grouping-select"></select>
-                                    <select id="cboRival01" class="ent-select"></select>
+                                    <select id="cboGroupingRival01" class="grouping-select" disabled="disabled"></select>
+                                    <select id="cboRival01" class="ent-select" disabled="disabled"></select>
                                 </div>
                                 <input id="Rival01PointsSlider" class="riv-points-slider"
-                                    type="range" min="0" max="100"
+                                    type="range" min="0" max="100" value="0"
                                     disabled="disabled"
                                 />
                             </div>
 
                             <div id="Rival01Right" class="riv-sel-right">
-                                <input id="Rival01Points" type="number" class="riv-points-box" min="0" max="100" disabled="disabled">
-                                <div id="Rival01PointsLabel" class="riv-points-box">Points</div>
-                            </div>
-                        </div>
-
-                        <div id="Rival02Container" class="rival-container ChoiceRow">
-                            <div id="Rival02RankNum" class="riv-sel-left">
-                                <div class="riv-sel-rank-text">#2</div>
-                            </div>
-
-                            <div id="Rival02Middle" class="riv-sel-middle">
-                                <div id="Rival02Selectors" class="riv-selectors ">
-                                    <select id="cboGroupingRival02" class="grouping-select"></select>
-                                    <select id="cboRival02" class="ent-select"></select>
-                                </div>
-                                <input id="Rival02PointsSlider"
-                                    type="range" min="0" max="100"
-                                    class="riv-points-slider" disabled="disabled"
-                                />
-                            </div>
-
-                            <div id="Rival02PointsBox" class="riv-points-right">
-                                <input id="Rival02Points" type="number" min="0" max="100" disabled="disabled" class="riv-points-box">
-                                <div id="Rival02PointsLabel" class="riv-points-box">Points</div>
+                                <input id="Rival01Points" class="riv-points-box" 
+                                    type="number" min="0" max="100"
+                                    disabled="disabled">
                             </div>
                         </div>
 
@@ -132,374 +121,10 @@
                 <div class="QuestionBody"></div>
             </div>
         </div>
-        <!-- This is added by our code. It's unedible in Qualtrics. -->
-        <div class="rivalry-points-error"></div>
     </div>
-
-
-
-
-    <!-- DEFAULT QUALTRICS CODE  -->
-<!--
-    <div class="QuestionBody BorderColor">
-        <ul class="ChoiceStructure">
-            <li class="Selection ">
-                <div class="SumInput">
-                    <input class="InputText QR-QID246-1 QWatchTimer" type="text" id="QR~QID246~1" name="QR~QID246~1"
-                        value="0" data-runtime-value="runtime.Choices.1.Value"> </div> <span class="LabelWrapper">
-                    <label for="QR~QID246~1" id="QID246-1-label">
-                        <span>
-                            <select class="grouping-select QWatchTimer">
-                                <option value="1364" selected="">NBA</option>
-                                <option value="1366">&nbsp;&nbsp;&nbsp;&nbsp;Eastern</option>
-                                <option value="2656">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Atlantic</option>
-                                <option value="2657">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Central</option>
-                                <option value="2658">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Southeast</option>
-                                <option value="1365">&nbsp;&nbsp;&nbsp;&nbsp;Western</option>
-                                <option value="2660">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Northwest</option>
-                                <option value="2659">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pacific</option>
-                                <option value="2661">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Southwest</option>
-                                <option value="11">Men's Spain club basketball</option>
-                                <option value="20">&nbsp;&nbsp;&nbsp;&nbsp;Liga ACB</option>
-                                <option value="21">&nbsp;&nbsp;&nbsp;&nbsp;LEB Oro</option>
-                                <option value="22">&nbsp;&nbsp;&nbsp;&nbsp;LEB Plata</option>
-                                <option value="23">&nbsp;&nbsp;&nbsp;&nbsp;Liga EBA</option>
-                                <option value="24">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Group A</option>
-                                <option value="25">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Group A-A
-                                </option>
-                                <option value="26">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Group A-B
-                                </option>
-                                <option value="27">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Group B</option>
-                                <option value="28">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Group C</option>
-                                <option value="29">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Group C-A
-                                </option>
-                                <option value="30">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Group C-B
-                                </option>
-                                <option value="31">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Group D</option>
-                                <option value="32">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Group D-A
-                                </option>
-                                <option value="33">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Group D-B
-                                </option>
-                                <option value="34">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Group E</option>
-                            </select><select class="grouping-select QWatchTimer">
-                                <option value=""></option>
-                                <option value="243">Atlanta Hawks</option>
-                                <option value="244">Boston Celtics</option>
-                                <option value="246">Charlotte Hornets</option>
-                                <option value="247">Chicago Bulls</option>
-                                <option value="248">Cleveland Cavaliers</option>
-                                <option value="249">Dallas Mavericks</option>
-                                <option value="250">Denver Nuggets</option>
-                                <option value="251">Detroit Pistons</option>
-                                <option value="252">Golden State Warriors</option>
-                                <option value="253">Houston Rockets</option>
-                                <option value="254">Indiana Pacers</option>
-                                <option value="255">Los Angeles Clippers</option>
-                                <option value="256">Los Angeles Lakers</option>
-                                <option value="257">Memphis Grizzlies</option>
-                                <option value="258">Miami Heat</option>
-                                <option value="259">Milwaukee Bucks</option>
-                                <option value="260">Minnesota Timberwolves</option>
-                                <option value="261">New Orleans Pelicans</option>
-                                <option value="262">New York Knicks</option>
-                                <option value="263">Oklahoma City Thunder</option>
-                                <option value="264">Orlando Magic</option>
-                                <option value="265">Philadelphia 76ers</option>
-                                <option value="266">Phoenix Suns</option>
-                                <option value="267">Portland Trail Blazers</option>
-                                <option value="268">Sacramento Kings</option>
-                                <option value="269">San Antonio Spurs</option>
-                                <option value="270">Toronto Raptors</option>
-                                <option value="271">Utah Jazz</option>
-                                <option value="272">Washington Wizards</option>
-                            </select><select id="cboRival01" class="QWatchTimer">
-                                <option value=""></option>
-                                <option value="243">Atlanta Hawks</option>
-                                <option value="244">Boston Celtics</option>
-                                <option value="246">Charlotte Hornets</option>
-                                <option value="247">Chicago Bulls</option>
-                                <option value="248">Cleveland Cavaliers</option>
-                                <option value="249">Dallas Mavericks</option>
-                                <option value="250">Denver Nuggets</option>
-                                <option value="251">Detroit Pistons</option>
-                                <option value="252">Golden State Warriors</option>
-                                <option value="253">Houston Rockets</option>
-                                <option value="254">Indiana Pacers</option>
-                                <option value="255">Los Angeles Clippers</option>
-                                <option value="256">Los Angeles Lakers</option>
-                                <option value="257">Memphis Grizzlies</option>
-                                <option value="258">Miami Heat</option>
-                                <option value="259">Milwaukee Bucks</option>
-                                <option value="260">Minnesota Timberwolves</option>
-                                <option value="261">New Orleans Pelicans</option>
-                                <option value="262">New York Knicks</option>
-                                <option value="263">Oklahoma City Thunder</option>
-                                <option value="264">Orlando Magic</option>
-                                <option value="265">Philadelphia 76ers</option>
-                                <option value="266">Phoenix Suns</option>
-                                <option value="267">Portland Trail Blazers</option>
-                                <option value="268">Sacramento Kings</option>
-                                <option value="269">San Antonio Spurs</option>
-                                <option value="270">Toronto Raptors</option>
-                                <option value="271">Utah Jazz</option>
-                                <option value="272">Washington Wizards</option>
-                            </select></span></label></span>
-            </li>
-            <li class="Selection ReadableAlt">
-                <div class="SumInput">
-                    <input class="InputText QR-QID246-2 QWatchTimer" type="text" id="QR~QID246~2"
-                        name="QR~QID246~2" value="0" data-runtime-value="runtime.Choices.2.Value">
-                    </div>
-                    <span
-                    class="LabelWrapper"> <label for="QR~QID246~2" id="QID246-2-label"><span><select
-                                class="grouping-select QWatchTimer">
-                                <option value="1364" selected="">NBA</option>
-                                <option value="1366">&nbsp;&nbsp;&nbsp;&nbsp;Eastern</option>
-                                <option value="2656">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Atlantic</option>
-                                <option value="1365">&nbsp;&nbsp;&nbsp;&nbsp;Western</option>
-                                <option value="2661">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Southwest</option>
-
-                            </select><select class="grouping-select QWatchTimer">
-                                <option value="1364" selected="">NBA</option>
-                                <option value="1366">&nbsp;&nbsp;&nbsp;&nbsp;Eastern</option>
-                                <option value="2656">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Atlantic</option>
-                                <option value="1365">&nbsp;&nbsp;&nbsp;&nbsp;Western</option>
-                                <option value="2661">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Southwest</option>
-
-                            </select><select id="cboRival02" class="QWatchTimer">
-                                <option value=""></option>
-                                <option value="243">Atlanta Hawks</option>
-                                <option value="244">Boston Celtics</option>
-                                <option value="0">...a bunch of other teams...</option>
-                                <option value="272">Washington Wizards</option>
-                            </select></span></label></span>
-            </li>
-            <li class="Selection ">
-                <div class="SumInput"> <input class="InputText QR-QID246-3 QWatchTimer" type="text" id="QR~QID246~3"
-                        name="QR~QID246~3" value="0" data-runtime-value="runtime.Choices.3.Value"> </div> <span
-                    class="LabelWrapper"> <label for="QR~QID246~3" id="QID246-3-label"><span><select
-                                class="grouping-select QWatchTimer">
-                                <option value="1364" selected="">NBA</option>
-                                <option value="1366">&nbsp;&nbsp;&nbsp;&nbsp;Eastern</option>
-                                <option value="2656">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Atlantic</option>
-                                <option value="1365">&nbsp;&nbsp;&nbsp;&nbsp;Western</option>
-                                <option value="2661">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Southwest</option>
-
-                            </select><select class="grouping-select QWatchTimer">
-                                <option value="1364" selected="">NBA</option>
-                                <option value="1366">&nbsp;&nbsp;&nbsp;&nbsp;Eastern</option>
-                                <option value="2656">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Atlantic</option>
-                                <option value="1365">&nbsp;&nbsp;&nbsp;&nbsp;Western</option>
-                                <option value="2661">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Southwest</option>
-
-                            </select><select id="cboRival03" class="QWatchTimer">
-                                <option value=""></option>
-                                <option value="243">Atlanta Hawks</option>
-                                <option value="244">Boston Celtics</option>
-                                <option value="272">Washington Wizards</option>
-                            </select></span></label></span>
-            </li>
-            <li class="Selection ReadableAlt">
-                <div class="SumInput"> <input class="InputText QR-QID246-4 QWatchTimer" type="text" id="QR~QID246~4"
-                        name="QR~QID246~4" value="0" data-runtime-value="runtime.Choices.4.Value"> </div> <span
-                    class="LabelWrapper"> <label for="QR~QID246~4" id="QID246-4-label"><span><select
-                                class="grouping-select QWatchTimer">
-                                <option value="1364" selected="">NBA</option>
-                                <option value="1366">&nbsp;&nbsp;&nbsp;&nbsp;Eastern</option>
-                                <option value="2656">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Atlantic</option>
-                                <option value="1365">&nbsp;&nbsp;&nbsp;&nbsp;Western</option>
-                                <option value="2661">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Southwest</option>
-
-                            </select><select class="grouping-select QWatchTimer">
-                                <option value="1364" selected="">NBA</option>
-                                <option value="1366">&nbsp;&nbsp;&nbsp;&nbsp;Eastern</option>
-                                <option value="2656">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Atlantic</option>
-                                <option value="1365">&nbsp;&nbsp;&nbsp;&nbsp;Western</option>
-                                <option value="2661">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Southwest</option>
-
-                            </select><select id="cboRival04" class="QWatchTimer">
-                                <option value=""></option>
-                                <option value="243">Atlanta Hawks</option>
-                                <option value="244">Boston Celtics</option>
-                                <option value="272">Washington Wizards</option>
-                            </select></span></label></span>
-            </li>
-            <li class="Selection ">
-                <div class="SumInput"> <input class="InputText QR-QID246-5 QWatchTimer" type="text" id="QR~QID246~5"
-                        name="QR~QID246~5" value="0" data-runtime-value="runtime.Choices.5.Value"> </div> <span
-                    class="LabelWrapper"> <label for="QR~QID246~5" id="QID246-5-label"><span><select
-                                class="grouping-select QWatchTimer">
-                                <option value="1364" selected="">NBA</option>
-                                <option value="1366">&nbsp;&nbsp;&nbsp;&nbsp;Eastern</option>
-                                <option value="2656">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Atlantic</option>
-                                <option value="1365">&nbsp;&nbsp;&nbsp;&nbsp;Western</option>
-                                <option value="2661">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Southwest</option>
-
-                            </select><select class="grouping-select QWatchTimer">
-                                <option value="1364" selected="">NBA</option>
-                                <option value="1366">&nbsp;&nbsp;&nbsp;&nbsp;Eastern</option>
-                                <option value="2656">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Atlantic</option>
-                                <option value="1365">&nbsp;&nbsp;&nbsp;&nbsp;Western</option>
-                                <option value="2661">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Southwest</option>
-
-                            </select><select id="cboRival05" class="QWatchTimer">
-                                <option value=""></option>
-                                <option value="243">Atlanta Hawks</option>
-                                <option value="244">Boston Celtics</option>
-                                <option value="0">...a bunch of other teams...</option>
-                                <option value="272">Washington Wizards</option>
-                            </select></span></label></span>
-            </li>
-            <li class="Selection ReadableAlt">
-                <div class="SumInput"> <input class="InputText QR-QID246-6 QWatchTimer" type="text" id="QR~QID246~6"
-                        name="QR~QID246~6" value="0" data-runtime-value="runtime.Choices.6.Value"> </div> <span
-                    class="LabelWrapper"> <label for="QR~QID246~6" id="QID246-6-label"><span><select
-                                class="grouping-select QWatchTimer">
-                                <option value="1364" selected="">NBA</option>
-                                <option value="1366">&nbsp;&nbsp;&nbsp;&nbsp;Eastern</option>
-                                <option value="2656">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Atlantic</option>
-                                <option value="1365">&nbsp;&nbsp;&nbsp;&nbsp;Western</option>
-                                <option value="2661">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Southwest</option>
-
-                            </select><select class="grouping-select QWatchTimer">
-                                <option value="1364" selected="">NBA</option>
-                                <option value="1366">&nbsp;&nbsp;&nbsp;&nbsp;Eastern</option>
-                                <option value="2656">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Atlantic</option>
-                                <option value="1365">&nbsp;&nbsp;&nbsp;&nbsp;Western</option>
-                                <option value="2661">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Southwest</option>
-
-                            </select><select id="cboRival06" class="QWatchTimer">
-                                <option value=""></option>
-                                <option value="243">Atlanta Hawks</option>
-                                <option value="244">Boston Celtics</option>
-                                <option value="0">...a bunch of other teams...</option>
-                                <option value="272">Washington Wizards</option>
-                            </select></span></label></span>
-            </li>
-            <li class="Selection ">
-                <div class="SumInput"> <input class="InputText QR-QID246-7 QWatchTimer" type="text" id="QR~QID246~7"
-                        name="QR~QID246~7" value="0" data-runtime-value="runtime.Choices.7.Value"> </div> <span
-                    class="LabelWrapper"> <label for="QR~QID246~7" id="QID246-7-label"><span><select
-                                class="grouping-select QWatchTimer">
-                                <option value="1364" selected="">NBA</option>
-                                <option value="1366">&nbsp;&nbsp;&nbsp;&nbsp;Eastern</option>
-                                <option value="2656">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Atlantic</option>
-                                <option value="1365">&nbsp;&nbsp;&nbsp;&nbsp;Western</option>
-                                <option value="2661">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Southwest</option>
-
-                            </select><select class="grouping-select QWatchTimer">
-                                <option value="1364" selected="">NBA</option>
-                                <option value="1366">&nbsp;&nbsp;&nbsp;&nbsp;Eastern</option>
-                                <option value="2656">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Atlantic</option>
-                                <option value="1365">&nbsp;&nbsp;&nbsp;&nbsp;Western</option>
-                                <option value="2661">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Southwest</option>
-
-                            </select><select id="cboRival07" class="QWatchTimer">
-                                <option value=""></option>
-                                <option value="243">Atlanta Hawks</option>
-                                <option value="244">Boston Celtics</option>
-                                <option value="0">...a bunch of other teams...</option>
-                                <option value="272">Washington Wizards</option>
-                            </select></span></label></span>
-            </li>
-            <li class="Selection ReadableAlt">
-                <div class="SumInput"> <input class="InputText QR-QID246-8 QWatchTimer" type="text" id="QR~QID246~8"
-                        name="QR~QID246~8" value="0" data-runtime-value="runtime.Choices.8.Value"> </div> <span
-                    class="LabelWrapper"> <label for="QR~QID246~8" id="QID246-8-label"><span><select
-                                class="grouping-select QWatchTimer">
-                                <option value="1364" selected="">NBA</option>
-                                <option value="1366">&nbsp;&nbsp;&nbsp;&nbsp;Eastern</option>
-                                <option value="2656">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Atlantic</option>
-                                <option value="1365">&nbsp;&nbsp;&nbsp;&nbsp;Western</option>
-                                <option value="2661">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Southwest</option>
-
-                            </select><select class="grouping-select QWatchTimer">
-                                <option value="1364" selected="">NBA</option>
-                                <option value="1366">&nbsp;&nbsp;&nbsp;&nbsp;Eastern</option>
-                                <option value="2656">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Atlantic</option>
-                                <option value="1365">&nbsp;&nbsp;&nbsp;&nbsp;Western</option>
-                                <option value="2661">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Southwest</option>
-
-                            </select><select id="cboRival08" class="QWatchTimer">
-                                <option value=""></option>
-                                <option value="243">Atlanta Hawks</option>
-                                <option value="244">Boston Celtics</option>
-                                <option value="0">...a bunch of other teams...</option>
-                                <option value="272">Washington Wizards</option>
-                            </select></span></label></span>
-            </li>
-            <li class="Selection ">
-                <div class="SumInput"> <input class="InputText QR-QID246-9 QWatchTimer" type="text" id="QR~QID246~9"
-                        name="QR~QID246~9" value="0" data-runtime-value="runtime.Choices.9.Value"> </div> <span
-                    class="LabelWrapper"> <label for="QR~QID246~9" id="QID246-9-label"><span><select
-                                class="grouping-select QWatchTimer">
-                                <option value="1364" selected="">NBA</option>
-                                <option value="1366">&nbsp;&nbsp;&nbsp;&nbsp;Eastern</option>
-                                <option value="2656">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Atlantic</option>
-                                <option value="1365">&nbsp;&nbsp;&nbsp;&nbsp;Western</option>
-                                <option value="2661">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Southwest</option>
-
-                            </select><select class="grouping-select QWatchTimer">
-                                <option value="1364" selected="">NBA</option>
-                                <option value="1366">&nbsp;&nbsp;&nbsp;&nbsp;Eastern</option>
-                                <option value="2656">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Atlantic</option>
-                                <option value="1365">&nbsp;&nbsp;&nbsp;&nbsp;Western</option>
-                                <option value="2661">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Southwest</option>
-
-                            </select><select id="cboRival09" class="QWatchTimer">
-                                <option value=""></option>
-                                <option value="243">Atlanta Hawks</option>
-                                <option value="244">Boston Celtics</option>
-                                <option value="0">...a bunch of other teams...</option>
-                                <option value="272">Washington Wizards</option>
-                            </select></span></label></span>
-            </li>
-            <li class="Selection ReadableAlt">
-                <div class="SumInput"> <input class="InputText QR-QID246-10 QWatchTimer" type="text" id="QR~QID246~10"
-                        name="QR~QID246~10" value="0" data-runtime-value="runtime.Choices.10.Value"> </div> <span
-                    class="LabelWrapper"> <label for="QR~QID246~10" id="QID246-10-label"><span><select
-                                class="grouping-select QWatchTimer">
-                                <option value="1364" selected="">NBA</option>
-                                <option value="1366">&nbsp;&nbsp;&nbsp;&nbsp;Eastern</option>
-                                <option value="2656">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Atlantic</option>
-                                <option value="1365">&nbsp;&nbsp;&nbsp;&nbsp;Western</option>
-                                <option value="2661">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Southwest</option>
-
-                            </select><select class="grouping-select QWatchTimer">
-                                <option value="1364" selected="">NBA</option>
-                                <option value="1366">&nbsp;&nbsp;&nbsp;&nbsp;Eastern</option>
-                                <option value="2656">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Atlantic</option>
-                                <option value="1365">&nbsp;&nbsp;&nbsp;&nbsp;Western</option>
-                                <option value="2661">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Southwest</option>
-
-                            </select><select id="cboRival10" class="QWatchTimer">
-                                <option value=""></option>
-                                <option value="243">Atlanta Hawks</option>
-                                <option value="244">Boston Celtics</option>
-                                <option value="0">...a bunch of other teams...</option>
-                                <option value="272">Washington Wizards</option>
-                            </select></span></label></span>
-            </li>
-            <li class="Total DarkBG BorderColor"> <label for="QID246_Total">Total</label>
-                <div class="SumTotal"> <input class="InputText QWatchTimer" type="text" value="" id="QID246_Total"
-                        name="QID246_Total" readonly="" data-runtime-value="runtime.Total"
-                        data-runtime-color="runtime.HighlightTotal" style="color: rgb(255, 0, 0);"> </div>
-            </li>
-        </ul>
-    </div>
--->
-
-
-
-
-
-
+    <button id="NextButton" style="margin-top: 20px;">
+        I'm the fake next button
+    </button>
 
     <script>
 
@@ -508,6 +133,35 @@
             let groupingId = -1, entId = -1;
             const self = this;
 
+            function createRivalContainers(){
+                // The HTML in Qualtrics only has a container for Rival01. This code uses that HTML as a template to create the rest of the containers.
+                // The number of container depends on number of teams that could potentially be a rival, below a certain maximum.
+                // E.g., the typical maximum number someone can choose might be 10 rivals, but a fan of smaller leagues (e.g., IPL) can only choose 7 rivals (8 IPL teams - 1 for the FavTeam).
+
+                // Number of entities in rival grouping who could potentially be rivals
+                const numOfEntsInGrouping = 32;
+
+                const maxNumOfRivals = 10;
+                const totalNumOfRivContainers = numOfEntsInGrouping<10 ? numOfEntsInGrouping-1 : maxNumOfRivals
+
+                const templateRivalKey = "Rival01";
+                let $curContainer = jQuery('#' + templateRivalKey + 'Container');
+                const strTemplateHTML =  jQuery('#' + templateRivalKey + 'Container')[0].outerHTML;
+                for (let rivNum=2; rivNum <= totalNumOfRivContainers; rivNum++) {
+                    const numTwoDigit = (rivNum) =>("0" + rivNum).slice(-2); // change 2 to 02, 3 to 03, etc.
+                    const strNewRivalKey = "Rival"+numTwoDigit(rivNum);
+                    const strCurRivalKey = "Rival"+numTwoDigit(rivNum-1);
+                    let newHTML = strTemplateHTML.replace(new RegExp( templateRivalKey, "g"),strNewRivalKey);
+                    newHTML = newHTML.replace(/\#1/,'#'+rivNum);
+                    $curContainer = jQuery('#' + strCurRivalKey + 'Container');
+                    $(newHTML).insertAfter($curContainer);
+                };
+
+                // Enable the dropdown boxes for Rival01
+                jQuery('#Rival01Container').find('.riv-selectors').find('select').removeAttr('disabled');
+
+                return totalNumOfRivContainers;
+            }
 
             if (OMNISURVEY_TEST || !window.Qualtrics) {
 
@@ -517,10 +171,65 @@
 
                 jQuery('body').prepend('<div id="SurveyInTestMode">The survey is in test mode.</div>');
 
-                // nextButtonHandler = function (isValidData) {
-                //     console.log("nextButtonHandler says isValidRivalSelection=", isValidData);
-                //     return true;
-                // }
+                groupingId = 1364;
+                entId = 244;
+
+                // Create the HTML code for the rest of the rivalry rows
+                createRivalContainers();
+
+                // Hookup Rivalry Points stuff
+
+                // Select all dropdown with cboRival in their name (cboRival01, cboRival02, etc.)
+                const $cboRivals = jQuery('select[id^=cboRival]');
+                const fnRivalKey = (that) => that.attr('id').replace('cbo', ''); // returns Rival01, Rival02, etc.
+
+                $cboRivals.each(function () {
+                    const $this = jQuery(this);
+                    const $points = $this.closest('.rival-container').find('input.riv-points-box');
+
+                    const rivalKey = fnRivalKey($this);
+
+                    // User changes a ent name
+                    $this.on('change', function () {
+                        $selected = jQuery(this).find('option:selected');
+                        console.log(rivalKey + 'Name: ' + $selected.text() + ' (' + + jQuery(this).val() + ')');
+                    });
+                    // User changes the rivalry point assignment
+                    $points.on('input change', function () {
+                        console.log(rivalKey + 'Points: ' + jQuery(this).val());
+                    });
+                });
+
+
+                jQuery("#NextButton").click(function () {
+                    let intNumOfRivalsListed = 0;
+                    jQuery.when(
+                        $cboRivals.each(function () {
+                            let $this = jQuery(this);
+                            let strRivalKey = fnRivalKey($this);
+                            let $points = jQuery('#'+strRivalKey+'Points');
+
+                            
+                            let cboSelection = $this.find('option:selected');
+                            let entID = cboSelection.val(),
+                                name = cboSelection.text(),
+                                rivpoints = $points.val();
+
+
+                            return jQuery.when()
+                                .then(function () {
+                                    if (entID) {
+                                        intNumOfRivalsListed++;
+                                    }
+                                })
+                                .then()
+                                .done(console.log("entID #" + entID + " stored to embedded data: " + name + " (" + rivpoints + " points)"));
+                        }))
+                        .done(
+                            function (data) {
+                                return intNumOfRivalsListed;
+                            });
+                });
 
                 init();
             } else {
@@ -539,7 +248,7 @@
 
                     $cboRivals.each(function () {
                         const $this = jQuery(this);
-                        const $points = $this.closest('.ChoiceRow').next('.ChoiceRow').find('input.QWatchTimer');
+                        const $points = $this.closest('.rival-container').find('input.riv-points-box');
 
                         const rivalKey = fnRivalKey($this);
 
@@ -559,12 +268,12 @@
                             console.log(`ED data for entID ${selectedEntID}: ${selectedName} (${selectedPoints} points)`);
                         });
 
-                        // User changes a ent name
+                        // User changes a ent name [DELETE. HERE FOR TESTING]
                         $this.on('change', function () {
                             $selected = jQuery(this).find('option:selected');
                             console.log(rivalKey + 'Name: ' + $selected.text() + ' (' + + jQuery(this).val() + ')');
                         });
-                        // User changes the rivalry point assignment
+                        // User changes the rivalry point assignment  [DELETE. HERE FOR TESTING]
                         $points.on('input change', function () {
                             console.log(rivalKey + 'Points: ' + jQuery(this).val());
                         });
@@ -575,9 +284,9 @@
                         jQuery.when(
                             $cboRivals.each(function () {
                                 const $this = jQuery(this);
-                                const $points = $this.closest('.ChoiceRow').next('.ChoiceRow').find('input.QWatchTimer');
+                                let strRivalKey = fnRivalKey($this);
+                                let $points = jQuery('#'+strRivalKey+'Points');
 
-                                const rivalKey = fnRivalKey($this);
                                 const cboSelection = $this.find('option:selected');
                                 let entID = cboSelection.val(),
                                     name = cboSelection.text(),
