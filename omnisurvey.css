@@ -252,7 +252,7 @@ QID246 is the question with grouping & ent dropdowns and points sliders and text
         color: red;
     }
     #rivalPointsErrorBox{
-        min-height: 25px;
+        min-height: 36px;
         text-align: center;
     }
     

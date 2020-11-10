@@ -18,7 +18,7 @@ var Omnisurvey_EntRivals = function ($, data, groupingId, entId) {
     const $curRivContainer = ($select) => $select.closest('.rival-container');
     const $nextRivContainer = ($select) => $curRivContainer($select).next('.rival-container');
 
-    const survIsInTestMode = $('#SurveyInTestMode');
+    const survIsInTestMode = $('#SurveyInTestMode').attr('id')===undefined;
 
 
     // Populate ents in second dropdown when user changes the grouping
