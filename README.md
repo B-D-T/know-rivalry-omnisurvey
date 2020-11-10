@@ -14,3 +14,6 @@ The change here was with `TeamRivals.html` and `TeamRivals.js`.
 
 ## November 5, 2020 07:42 AM  
 David has a working version, at least for the NBA.
+
+## November 10, 2020 06:33 AM  
+The version is working decently well, but still needs some help. David moved the **Production code back to AuxDev** in anticipation of meeting with Danny today to discuss.
