@@ -64,7 +64,7 @@ var Omnisurvey_EntRivals = function ($, data, groupingId, entId) {
             // Enable this rival's input box
             $rivalPointsInput.removeAttr('disabled');
             // If the points box as a value in it, leave the value. Otherwise, set the box to =1
-            if (!$rivalPointsInput.val()){$rivalPointsInput.attr({min: '1'}).val(1)};
+            if (!$rivalPointsInput.val()){$rivalPointsInput.attr({min: '1'}).val(1)}; 
             // Enable the following rival selection boxes (if that rival row exists)
             $nextRival.find('.grouping-select, .ent-select').removeAttr('disabled');
         }
@@ -76,7 +76,7 @@ var Omnisurvey_EntRivals = function ($, data, groupingId, entId) {
     function validate() {
         let isValidRivalsSelection = false;
         
-        isValidRivalsSelection = check100Points();       
+        isValidRivalsSelection = check100Points();
         nextBtn(isValidRivalsSelection);
 
         function nextBtn(enableBtn){
@@ -276,8 +276,7 @@ var Omnisurvey_EntRivals = function ($, data, groupingId, entId) {
             });
 
         // Whenever the Qualtrics question changes,
-        // find all the SELECT elements (dropdowns) that do NOT have 'grouping-select' as a class.
-        // 
+        // find all the SELECT elements (dropdowns) that that have 'ent-select' as a class.
         $question.on('change', strEntDropdownSelector, function() {
             selectEnt($(this));
         });

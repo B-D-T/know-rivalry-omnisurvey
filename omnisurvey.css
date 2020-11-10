@@ -88,7 +88,7 @@ QID246 is the question with grouping & ent dropdowns and points sliders and text
 .riv-point-explanation ul, .riv-point-instructions ul{
     margin: 0px auto 4px 20px;
     margin-top: 2px;
-    line-height: 1.2em;
+    line-height: 1.4em;
 }
 .riv-point-instructions p{
     font-size:0.7em;
@@ -132,7 +132,7 @@ QID246 is the question with grouping & ent dropdowns and points sliders and text
     display: flex;
     flex-flow: row wrap;
     column-gap: 3px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 /* The direct children are each containers of columned-stacked elements  */
@@ -144,8 +144,8 @@ QID246 is the question with grouping & ent dropdowns and points sliders and text
 
     #rivSelTblWrapper .riv-sel-left{
         flex-flow: row wrap;
-        flex: 0 1 60px;
-        min-width: 50px;
+        flex: 0 1 40px;
+        min-width: 40px;
         align-items:flex-start;
     }
     .riv-sel-rank-text{
@@ -159,7 +159,8 @@ QID246 is the question with grouping & ent dropdowns and points sliders and text
     #rivSelTblWrapper .riv-sel-middle{
         align-content: stretch;
         flex:1 1 auto;
-        max-width: 500px;
+        max-width: 400px;
+        row-gap: 3px;
     }
 
         /* Container row within a rival selector area (the combo boxes) */
@@ -174,7 +175,6 @@ QID246 is the question with grouping & ent dropdowns and points sliders and text
             #rivSelTblWrapper .riv-selectors select{
                 font-size: 13px;
                 width: 100%;
-                max-width: 25%; /* So it doesn't overflow from its parent */
                 
                 /* wrap text in compatible browsers */
                 -moz-white-space: pre-wrap;
@@ -187,16 +187,16 @@ QID246 is the question with grouping & ent dropdowns and points sliders and text
 
             /* Dropdown box for choosing the grouping */
             #rivSelTblWrapper select.grouping-select{
-                margin: auto 20px 0px 5px;
+                margin: auto 5px 0px 5px;
+                max-width: 20%; /* So it doesn't overflow from its parent */
             }
             /* Dropdown box for choosing the entity/team */
             #rivSelTblWrapper select.ent-select{
                 margin-left:5px;
+                max-width: 55%; /* So it doesn't overflow from its parent */
             }
 
-            #rivSelTblWrapper select.ent-select::hover{
-
-            }
+            
 
         /* Rivalry points slider for a given rival  */
         #rivSelTblWrapper input.riv-points-slider{
