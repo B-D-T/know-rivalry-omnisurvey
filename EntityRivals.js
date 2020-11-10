@@ -229,7 +229,7 @@ var Omnisurvey_EntRivals = function ($, data, groupingId, entId) {
 
 
     function init() {
-        if (survIsInTestMode){console.log("TeamRivals.js running in test mode.")};
+        if (survIsInTestMode){console.log("EntityRivals.js running in test mode.")};
         let groups = null;
 
         // Randomize the order of examples in the instructions. Try not to influence how many rivals to list.

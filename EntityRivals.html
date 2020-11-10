@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" type="text/css" href="omnisurvey.css" />
     <script src="omnisurveyData.js"></script>
-    <script src="TeamRivals.js"></script>
+    <script src="EntityRivals.js"></script>
 
     <meta id="meta-viewport" name="viewport"
         content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.5" />
@@ -45,9 +45,9 @@
                         </p>
                         <!-- These are presented in a random order -->
                         <ul id="rivPointSampleDistributions">
-                            <li id="sampleSplitBwTeams">Split points between teams?</li>
+                            <li id="sampleSplitBwEntities">Split points between teams?</li>
                             <li id="sample60_30_10">60 points to the strongest rival, 30 points to another team, and 10 points to a third opponent?</li>
-                            <li id="sampleAllToOneTeam">All 100 points to one team?</li>
+                            <li id="sampleAllToOneEntity">All 100 points to one team?</li>
                             <li id="sampleEvenDistToSeveral">Evenly distribute points to several teams? (up to 10)</li>
                         </ul>
                         <p>
@@ -130,7 +130,7 @@
             function createRivalContainers(){
                 // The HTML in Qualtrics only has a container for Rival01. This code uses that HTML as a template to create the rest of the containers.
                 // The number of container depends on number of teams that could potentially be a rival, below a certain maximum.
-                // E.g., the typical maximum number someone can choose might be 10 rivals, but a fan of smaller leagues (e.g., IPL) can only choose 7 rivals (8 IPL teams - 1 for the FavTeam).
+                // E.g., the typical maximum number someone can choose might be 10 rivals, but a fan of smaller leagues (e.g., IPL) can only choose 7 rivals (8 IPL teams - 1 for the FavEnt).
 
                 // Number of entities in rival grouping who could potentially be rivals
                 const numOfEntsInGrouping = 32;

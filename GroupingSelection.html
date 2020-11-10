@@ -10,7 +10,7 @@
 		
 		<link rel="stylesheet" type="text/css" href="omnisurvey.css" />
 		<script src="omnisurveyData.js"></script>
-		<script src="LeagueSelection.js"></script>
+		<script src="GroupingSelection.js"></script>
 		
 		<meta id="meta-viewport" name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.5" />
 		<!-- This is here for testing purposes. The real link will be within the Qualtrics Advanced Look & Feel section -->
@@ -283,8 +283,8 @@
 
 
 			function loadQuestion() {
-				// Omnisurvey_GroupingSelection envelopes the entire file of LeagueSelection.js
-				// By passing omnisurvey_data, it lets us expose all of omnisurveyData.js to LeagueSelection.js
+				// Omnisurvey_GroupingSelection envelopes the entire file of GroupingSelection.js
+				// By passing omnisurvey_data, it lets us expose all of omnisurveyData.js to GroupingSelection.js
 				var omnisurvey_GroupingSelection = new Omnisurvey_GroupingSelection(jQuery, self.omnisurvey_data, groupingId, surveyId); // this is what loads the Omnisurvey
 				omnisurvey_GroupingSelection.nextButtonHandler = nextButtonHandler;
 
