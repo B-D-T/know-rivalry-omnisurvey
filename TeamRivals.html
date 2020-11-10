@@ -22,21 +22,22 @@
 <body id="SurveyEngineBody">
 
     <!-- QID8 is TextExplainingRivalryPoints -->
-    <div>
-        <p style="font-weight:bold; font-size:1.1em; margin:15px 15%; text-align:center;">
-            If you were given 100 "rivalry points" to allocate to opponents of ${e://Field/FavObjThe},
-            how would you allocate those points?
-        </p>
+    <div class="riv-point-explanation">
         <p>
-            For instance, you may choose to allocate 60 points to the opposing team you
-            consider to be the strongest rival of ${e://Field/FavObjThe},
-            30 points to another opposing team that you consider a rival of ${e://Field/FavObjThe},
-            and 10 points to a third opponent.
-            Another option might be to allocate all 100 points to the one team you consider to be a rival.
+            You have
+            <span style="font-weight: bold; font-style: italic;">100 rivalry points</span>
+            to allocate to the rival(s) of ${e://Field/FavObjThe}.<br/>
+            How do you assign these points? Do you...
         </p>
+        <!-- These are presented in a random order -->
+        <ul id="rivPointSampleDistributions">
+            <li id="sampleSplitBwTeams">Split points between teams?</li>
+            <li id="sample60_30_10">60 points to the strongest rival, 30 points to another team, and 10 points to a third opponent?</li>
+            <li id="sampleAllToOneTeam">All 100 points to one team?</li>
+            <li id="sampleEvenDistToSeveral">Evenly distribute points to several teams? (up to 10)</li>
+        </ul>
         <p>
-            You choose the distribution,
-            as long as it equals 100 total points.
+            Choose the distribution based on <i>your</i> view of the rival(s).
         </p>
     </div>
 
@@ -55,17 +56,12 @@
                 <div class="QuestionText BorderColor">
                 <!-- START EDITABLE PART OF QUALTRICS QUESTION -->
 
-                    <div id="rivalryPointsInstructions">
-                        <p>Rivalry points allocation</p>
-                        <p style="font-size:0.9em;">If listing more than one rival, please list highest point rival
-                            first (i.e., the "biggest rival" should be at the top, then the next biggest, then the next,
-                            etc.</p>
-                        <ul style="margin-top:15px;">
-                            <li>Use the dropdown to select the first rival</li>
-                            <li>Assign points using the slider or by typing in the number of rivalry points to assign
-                            </li>
-                            <li>Repeat the process for as many rivals as you deem appropriate</li>
-                        </ul>
+                    <div id="rivalryPointsInstructions" class="riv-point-instructions">
+                       <p> 
+                           If listing more than one rival, please list highest point rival
+                           first (i.e., the "biggest rival" should be at the top, then the next biggest, then the next,
+                           etc.
+                        </p>
                     </div>
 
                     <div id="rivSelTblWrapper">
@@ -266,20 +262,6 @@
                         jQuery.when(qse.getEmbeddedData(rivalKey + 'Points')).then(function (data) {
                             selectedPoints = data;
                             $this.val(selectedPoints);
-                        });
-                        jQuery.when(qse.getEmbeddedData(rivalKey + 'Name')).then(function (data) { // not needed. Just here for testing
-                            selectedName = data;
-                            console.log(`ED data for entID ${selectedEntID}: ${selectedName} (${selectedPoints} points)`);
-                        });
-
-                        // User changes a ent name [DELETE. HERE FOR TESTING]
-                        $this.on('change', function () {
-                            $selected = jQuery(this).find('option:selected');
-                            console.log(rivalKey + 'Name: ' + $selected.text() + ' (' + + jQuery(this).val() + ')');
-                        });
-                        // User changes the rivalry point assignment  [DELETE. HERE FOR TESTING]
-                        $points.on('input change', function () {
-                            console.log(rivalKey + 'Points: ' + jQuery(this).val());
                         });
                     });
 

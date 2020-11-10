@@ -34,7 +34,7 @@ var Omnisurvey_FavoriteEnts = function ($, data, groupingId) {
 
 			// Each subsequent child level is indented slightly more
 			let spacer = '';
-			const intIndent = 4;
+			const intIndent = 2;
 			for (var i = 0; i < level * intIndent; i++) {
 				spacer += '&nbsp;';
 			}

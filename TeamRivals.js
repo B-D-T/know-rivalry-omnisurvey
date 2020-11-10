@@ -190,7 +190,7 @@ var Omnisurvey_EntRivals = function ($, data, groupingId, entId) {
 
             // Each subsequent child level is indented slightly more
             let spacer = '';
-            const intIndent = 4;
+            const intIndent = 2;
             for (var i = 0; i < level * intIndent; i++) {
                 spacer += '&nbsp;';
             }
@@ -212,11 +212,25 @@ var Omnisurvey_EntRivals = function ($, data, groupingId, entId) {
         });
     }
 
+    function shuffleElements($selector) {
+        let array = $selector.children();
+        for (let iCount = array.length - 1; iCount > 0; iCount--) {
+            const jCount = Math.floor(Math.random() * (iCount + 1));
+            [array[iCount], array[jCount]] = [array[jCount], array[iCount]];
+        };
+        let strToReturn='';
+        $.each(array, (idx,$elem) => strToReturn += $elem.outerHTML );
+        return strToReturn;
+    }
 
 
     function init() {
         if (survIsInTestMode){console.log("TeamRivals.js running in test mode.")};
         let groups = null;
+
+        // Randomize the order of examples in the instructions. Try not to influence how many rivals to list.
+        let $sampleRivalPointDistributions = $('#rivPointSampleDistributions');
+        $sampleRivalPointDistributions.html(shuffleElements($sampleRivalPointDistributions));
 
         if (groupingId > 0) {
             // get the grouping grouping
