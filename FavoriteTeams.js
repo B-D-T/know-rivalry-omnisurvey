@@ -17,7 +17,7 @@ var Omnisurvey_FavoriteEnts = function ($, data, groupingId) {
 	let $selectedEntContainer = $('#selected-ent');
 
 	const $entsContainer = $('#ents-container');
-	const $nextButton = $('#NextButton');
+	const $nextButton = $("NextButton");
 
 	const strEntLogoRootDir = 'https://knowrivalry.com/images/teamlogos/'; // This is the folder that holds the logos (SVGs) for each ent
 

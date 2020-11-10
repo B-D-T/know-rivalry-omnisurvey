@@ -58,11 +58,15 @@ var Omnisurvey_EntRivals = function ($, data, groupingId, entId) {
             const $nextRivalPointsInput = $nextRival.find(strRivalPointsBoxSelector);
             $.each([$rivalPointsInput, $nextRivalPointsInput],function(idx,elem){
                 elem.attr({disabled: 'disabled', min: '0'}).val(0);
+                $curRivContainer(elem).find('.ent-select.is-enabled').removeClass('is-enabled');
             });
             $nextRival.find('.grouping-select, .ent-select').attr({disabled:'disabled'});
         } else {
             // Enable this rival's input box
             $rivalPointsInput.removeAttr('disabled');
+            // Emphasize available dropdown boxes
+            $curRivContainer($select).find('.ent-select').addClass('is-enabled');
+            $nextRivContainer($select).find('.ent-select').addClass('is-enabled');
             // If the points box as a value in it, leave the value. Otherwise, set the box to =1
             if (!$rivalPointsInput.val()){$rivalPointsInput.attr({min: '1'}).val(1)}; 
             // Enable the following rival selection boxes (if that rival row exists)

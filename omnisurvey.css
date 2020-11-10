@@ -144,8 +144,8 @@ QID246 is the question with grouping & ent dropdowns and points sliders and text
 
     #rivSelTblWrapper .riv-sel-left{
         flex-flow: row wrap;
-        flex: 0 1 40px;
-        min-width: 40px;
+        flex: 1 1 60px;
+        max-width:70px;
         align-items:flex-start;
     }
     .riv-sel-rank-text{
@@ -195,6 +195,11 @@ QID246 is the question with grouping & ent dropdowns and points sliders and text
                 margin-left:5px;
                 max-width: 55%; /* So it doesn't overflow from its parent */
             }
+
+            #rivSelTblWrapper select.is-enabled{
+                /* Not currently in use (Nov 2020), but might be someday soon */
+            }
+
 
             
 

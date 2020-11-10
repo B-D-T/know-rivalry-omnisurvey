@@ -21,27 +21,6 @@
 
 <body id="SurveyEngineBody">
 
-    <!-- QID8 is TextExplainingRivalryPoints -->
-    <div class="riv-point-explanation">
-        <p>
-            You have
-            <span style="font-weight: bold; font-style: italic;">100 rivalry points</span>
-            to allocate to the rival(s) of ${e://Field/FavObjThe}.<br/>
-            How do you assign these points? Do you...
-        </p>
-        <!-- These are presented in a random order -->
-        <ul id="rivPointSampleDistributions">
-            <li id="sampleSplitBwTeams">Split points between teams?</li>
-            <li id="sample60_30_10">60 points to the strongest rival, 30 points to another team, and 10 points to a third opponent?</li>
-            <li id="sampleAllToOneTeam">All 100 points to one team?</li>
-            <li id="sampleEvenDistToSeveral">Evenly distribute points to several teams? (up to 10)</li>
-        </ul>
-        <p>
-            Choose the distribution based on <i>your</i> view of the rival(s).
-        </p>
-    </div>
-
-
     <!-- QID246 is RivalryPointsAllocation -->
     <div class="QuestionOuter BorderColor DB  QID246" id="QID246" questionid="QID246" posttag="QID246"
         data-runtime-remove-class-hidden="runtime.Displayed">
@@ -54,7 +33,27 @@
         <div class="Inner BorderColor TB">
             <div class="InnerInner BorderColor">
                 <div class="QuestionText BorderColor">
-                <!-- START EDITABLE PART OF QUALTRICS QUESTION -->
+                <!-- START EDITABLE PART OF QUALTRICS QUESTION
+                The part in here is what you copy into Qualtrics -->
+
+                    <div class="riv-point-explanation">
+                        <p>
+                            You have
+                            <span style="font-weight: bold; font-style: italic;">100 rivalry points</span>
+                            to allocate to the rival(s) of ${e://Field/FavObjThe}.<br/>
+                            How do you assign these points? Do you...
+                        </p>
+                        <!-- These are presented in a random order -->
+                        <ul id="rivPointSampleDistributions">
+                            <li id="sampleSplitBwTeams">Split points between teams?</li>
+                            <li id="sample60_30_10">60 points to the strongest rival, 30 points to another team, and 10 points to a third opponent?</li>
+                            <li id="sampleAllToOneTeam">All 100 points to one team?</li>
+                            <li id="sampleEvenDistToSeveral">Evenly distribute points to several teams? (up to 10)</li>
+                        </ul>
+                        <p>
+                            Choose the distribution based on <i>your</i> view of the rival(s).
+                        </p>
+                    </div>
 
                     <div id="rivalryPointsInstructions" class="riv-point-instructions">
                        <p> 
@@ -154,6 +153,7 @@
 
                 // Enable the dropdown boxes for Rival01
                 jQuery('#Rival01Container').find('.riv-selectors').find('select').removeAttr('disabled');
+                jQuery('#Rival01Container').find('.ent-select').addClass('is-enabled');
 
                 return totalNumOfRivContainers;
             }

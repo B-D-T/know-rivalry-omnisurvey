@@ -44,12 +44,12 @@
                 <a href="#" class="faventResetAllFilters">&lt; select a different team</a>
             </div>
         </div>
-        <!-- <div id="Buttons" role="navigation">
+
+
+        <div id="Buttons" role="navigation">
             <input id="NextButton" class="NextButton Button" title="Next  >>" type="button" name="NextButton"
-                value="Next  &gt;&gt;" data-runtime-disabled="runtime.Disabled"
-                data-runtime-aria-label="runtime.ariaLabel" data-runtime-hide="runtime.Hide" page-id="P_1546466904154"
-                aria-label="Next  &gt;&gt;" >
-        </div> -->
+                value="Next  &gt;&gt;">
+        </div>
 
 
 
@@ -75,11 +75,11 @@
                     groupingId = parseInt(searchParams.get('grpID'));
                 }
 
+                jQuery('body').prepend('<div id="SurveyInTestMode">The survey is in test mode.</div>');
+
                 favoriteEntSelectedHandler = function () {
                     console.log('FAVTEAM:', this.FavoriteEntName, this.FavoriteEntId);
                 };
-
-                jQuery('body').prepend('<div id="SurveyInTestMode">The survey is in test mode.</div>');
 
                 init();
 
